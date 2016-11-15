@@ -64,7 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Background\ScrollinBackground.cs" />
-    <Compile Include="Assets\Scripts\Background\Test_MoveGround.cs" />
     <Compile Include="Assets\Scripts\Character_Movement\Movement_player.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
   </ItemGroup>
