@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/trollskog_vs_1.unity
+- path: Assets/Scenes/hektor_test.unity
   isLoaded: 1
   isActive: 1
