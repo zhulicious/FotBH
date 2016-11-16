@@ -14,12 +14,11 @@ public class SafeZone : MonoBehaviour {
 	{
 		if (col.name == "Player")
 		{
-            mamaRef.PlayerStatus(true);
-        }
-        Debug.Log("Safe");
-
-    }
-    void OnTriggerExit2D(Collider2D col)
+			mamaRef.PlayerStatus(true);
+		}
+		Debug.Log ("Safe");
+	}
+	void OnTriggerExit2D(Collider2D col)
 	{
 		if (col.name == "Player") 
 		{

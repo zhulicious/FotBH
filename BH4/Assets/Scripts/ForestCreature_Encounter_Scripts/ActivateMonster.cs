@@ -15,8 +15,8 @@ public class ActivateMonster : MonoBehaviour {
 	{
 		if (col.name == "Player") {
 			mama.GoMonster ();
-			Debug.Log ("Activate Monster");
-			//Destroy (col.gameObject);
+			Debug.Log ("Activate Montster");
+			Destroy (gameObject);
 		}
 	}
 
