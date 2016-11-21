@@ -9,6 +9,7 @@ public class Movement_player : MonoBehaviour
     SpriteRenderer sprite;
     //BoxCollider2D collider;
 	public float runSpeed = 1.2f;
+	public float groundSpeed = 0.5f;
     public float jumpSpeed = 3f;
     public float fallSpeed = 5f;
     bool canJump;
@@ -17,6 +18,7 @@ public class Movement_player : MonoBehaviour
     Vector3 jumpDirection;
     Vector3 jumpStart;
     enum States { Idle, Right, Left, Jump, Fall};
+	public GameObject groundObject;
 
 	// Use this for initialization
 	void Awake () 
@@ -72,7 +74,6 @@ public class Movement_player : MonoBehaviour
         }
         MoveCases (movement);
         //Debug.Log(movement);
-        Camera.main.transform.position = new Vector3 (transform.position.x, transform.position.y, Camera.main.transform.position.z);
     }
     //Vilken animation ska spelas
     void MoveCases (States movementCase)
@@ -89,17 +90,26 @@ public class Movement_player : MonoBehaviour
             case States.Right: //Moving right
                 sprite.flipX = false;
                 transform.Translate(Vector3.right * Time.fixedDeltaTime * runSpeed);
+				groundObject.transform.Translate(Vector3.left * Time.fixedDeltaTime * groundSpeed);
                 anim.SetBool("Run", true);
                 break;
 
             case States.Left: //Moving left
                 sprite.flipX = true;
                 transform.Translate(-Vector3.right * Time.fixedDeltaTime * runSpeed);
+				groundObject.transform.Translate(Vector3.right * Time.fixedDeltaTime * groundSpeed);
+
                 anim.SetBool("Run", true);
                 break;
 
             case States.Jump: //Jumping
                 transform.Translate((jumpDirection - jumpStart) * Time.fixedDeltaTime * jumpSpeed);
+				if(jumpDirection.x < 0){
+					groundObject.transform.Translate(Vector3.right * Time.fixedDeltaTime * groundSpeed);
+				}else{
+					groundObject.transform.Translate(Vector3.left * Time.fixedDeltaTime * groundSpeed);
+
+				}
                 anim.SetBool("Jump", true);
                 break;
 
@@ -162,4 +172,8 @@ public class Movement_player : MonoBehaviour
             sprite.flipX = true;
         }
     }
+	void Update(){
+		Camera.main.transform.position = new Vector3 (transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
+
+	}
 }
