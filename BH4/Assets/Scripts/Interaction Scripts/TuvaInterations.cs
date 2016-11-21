@@ -17,7 +17,7 @@ public class TuvaInterations : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D col){
 		currentTag = col.gameObject.tag;
-		if(currentTag == "Object_Talk"){
+		if(currentTag == "NPC_Talk"){
 			col.gameObject.GetComponent<Talk>().Conversation();
 			//chatSystem.GetComponent<ChatSystem>().CharacterTalk(col.gameObject, chat, null, null);
 			col.gameObject.SetActive(false);

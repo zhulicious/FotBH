@@ -10,6 +10,7 @@ public class Movement_player : MonoBehaviour
     //BoxCollider2D collider;
 	public float runSpeed = 1.2f;
 	public float groundSpeed = 0.5f;
+	public float frontGroundSpeed = 1f;
     public float jumpSpeed = 3f;
     public float fallSpeed = 5f;
     bool canJump;
@@ -19,6 +20,7 @@ public class Movement_player : MonoBehaviour
     Vector3 jumpStart;
     enum States { Idle, Right, Left, Jump, Fall};
 	public GameObject groundObject;
+	public GameObject frontGroundObject;
 
 	// Use this for initialization
 	void Awake () 
@@ -91,6 +93,8 @@ public class Movement_player : MonoBehaviour
                 sprite.flipX = false;
                 transform.Translate(Vector3.right * Time.fixedDeltaTime * runSpeed);
 				groundObject.transform.Translate(Vector3.left * Time.fixedDeltaTime * groundSpeed);
+				frontGroundObject.transform.Translate(Vector3.left * Time.fixedDeltaTime * frontGroundSpeed);
+
                 anim.SetBool("Run", true);
                 break;
 
@@ -98,6 +102,8 @@ public class Movement_player : MonoBehaviour
                 sprite.flipX = true;
                 transform.Translate(-Vector3.right * Time.fixedDeltaTime * runSpeed);
 				groundObject.transform.Translate(Vector3.right * Time.fixedDeltaTime * groundSpeed);
+				frontGroundObject.transform.Translate(Vector3.right * Time.fixedDeltaTime * frontGroundSpeed);
+
 
                 anim.SetBool("Run", true);
                 break;
@@ -106,8 +112,12 @@ public class Movement_player : MonoBehaviour
                 transform.Translate((jumpDirection - jumpStart) * Time.fixedDeltaTime * jumpSpeed);
 				if(jumpDirection.x < 0){
 					groundObject.transform.Translate(Vector3.right * Time.fixedDeltaTime * groundSpeed);
+					frontGroundObject.transform.Translate(Vector3.right * Time.fixedDeltaTime * frontGroundSpeed);
+
 				}else{
 					groundObject.transform.Translate(Vector3.left * Time.fixedDeltaTime * groundSpeed);
+					frontGroundObject.transform.Translate(Vector3.left * Time.fixedDeltaTime * frontGroundSpeed);
+
 
 				}
                 anim.SetBool("Jump", true);
