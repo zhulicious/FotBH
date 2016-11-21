@@ -6,7 +6,7 @@ public class TuvaInterations : MonoBehaviour {
 	public GameObject eButton;
 	public GameObject chatSystem;
 	public enum doing{noInteraction, canInteract, alreadyInteracting};
-	public doing tuvaDoing = doing.noInteraction;
+	doing tuvaDoing = doing.noInteraction;
 	GameObject currentInteractionObject;
 	string currentTag;
 
@@ -28,10 +28,8 @@ public class TuvaInterations : MonoBehaviour {
 		if(tuvaDoing == doing.noInteraction || tuvaDoing != doing.alreadyInteracting){
 			if(currentTag == "Tuva_Talk"){
 				tuvaDoing = doing.canInteract;
-			}else if(currentTag == "JumpSpot"){
+			}else if(currentTag == "Tuva_Jump"){
 				tuvaDoing = doing.canInteract;
-
-				//CanInteractAgain();
 			}else if(currentTag == "Pick_Up"){
 				tuvaDoing = doing.canInteract;
 			}else if(currentTag == "Use_Item"){
@@ -61,19 +59,14 @@ public class TuvaInterations : MonoBehaviour {
 		}
 
 	}
-	IEnumerator WaitTime(float _time){
-		yield return new WaitForSeconds(_time);
-		CanInteractAgain();
-	}
 	void InteractWithObject(){
 		tuvaDoing = doing.alreadyInteracting;
 		DeactivateInteractionButton();
 		if(currentTag == "Tuva_Talk"){
 			//Should return Strings to say
 			chatSystem.GetComponent<ChatSystem>().CharacterTalk(gameObject, "Who are\n you?", "Im Tuva", null);
-		}else if(currentTag == "JumpSpot"){
-			Debug.Log("jumpspot");
-			StartCoroutine(WaitTime(2.0f));
+		}else if(currentTag == "Tuva_Jump"){
+
 		}else if(currentTag == "Pick_Up"){
 
 		}else if(currentTag == "Use_Item"){

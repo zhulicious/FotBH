@@ -14,7 +14,8 @@ public class PCE_buttonScript : MonoBehaviour {
     {
         if (currentName == "Play")
         {
-            SceneManager.LoadScene("trollskog_vs_1");
+            //SceneManager.LoadScene("trollskog_vs_1");
+            Debug.Log("LoadScene(trollskog)");
         }
         else if (currentName == "Credits")
         {
@@ -24,6 +25,10 @@ public class PCE_buttonScript : MonoBehaviour {
         {
             //Application.Quit();
             Debug.Log("Application.Quit();");
+        }
+        else if (currentName == "Return")
+        {
+            menuScript.ChangeToCreditPanel("Menu");
         }
     }
 
