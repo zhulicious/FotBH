@@ -65,6 +65,8 @@
   <ItemGroup>
     <Compile Include="Assets\Main_Menu\Scripts\MenuScript.cs" />
     <Compile Include="Assets\Main_Menu\Scripts\PCE_buttonScript.cs" />
+    <Compile Include="Assets\Main_Menu\Scripts\TuvaButtonScript.cs" />
+    <Compile Include="Assets\Main_Menu\Scripts\TuvaMenuScript.cs" />
     <Compile Include="Assets\Scripts\Background\ScrollinBackground.cs" />
     <Compile Include="Assets\Scripts\Character_Movement\Movement_player.cs" />
     <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\ActivateMonster.cs" />

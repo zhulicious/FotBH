@@ -6,6 +6,7 @@ public class MenuScript : MonoBehaviour {
     GameObject play_button;
     GameObject credits_button;
     GameObject exit_button;
+    GameObject return_button;
 
     public LayerMask button_mask;
 
@@ -18,6 +19,7 @@ public class MenuScript : MonoBehaviour {
         play_button = GameObject.Find("Play");
         credits_button = GameObject.Find("Credits");
         exit_button = GameObject.Find("Exit");
+        return_button = GameObject.Find("Return");
         Debug.Log(play_button.name + ", " + credits_button.name + ", " + exit_button.name);
 
         menu_UI = canvas.transform.GetChild(0).gameObject;
@@ -50,14 +52,20 @@ public class MenuScript : MonoBehaviour {
     {
         if (value == "Menu")
         {
+            play_button.gameObject.SetActive(true);
+            credits_button.gameObject.SetActive(true);
+            exit_button.gameObject.SetActive(true);
+            return_button.gameObject.SetActive(false);
             menu_UI.SetActive(true);
             credits_UI.SetActive(false);
         }
+
         if (value == "Credits")
         {
             play_button.gameObject.SetActive(false);
             credits_button.gameObject.SetActive(false);
             exit_button.gameObject.SetActive(false);
+            return_button.gameObject.SetActive(true);
             menu_UI.SetActive(false);
             credits_UI.SetActive(true);
         }
