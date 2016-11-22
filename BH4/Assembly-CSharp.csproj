@@ -49,6 +49,7 @@
      <Compile Include="Assets\Main_Menu\Scripts\PCE_buttonScript.cs" />
      <Compile Include="Assets\Main_Menu\Scripts\TuvaButtonScript.cs" />
      <Compile Include="Assets\Main_Menu\Scripts\TuvaMenuScript.cs" />
+     <Compile Include="Assets\Scripts\AI_Movement.cs" />
      <Compile Include="Assets\Scripts\Background\ScrollinBackground.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\ActivateMonster.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\EnemyBehaviour.cs" />
@@ -57,6 +58,7 @@
      <Compile Include="Assets\Scripts\Interaction Scripts\ChatSystem.cs" />
      <Compile Include="Assets\Scripts\Interaction Scripts\Dialogs.cs" />
      <Compile Include="Assets\Scripts\Interaction Scripts\Talk.cs" />
+     <Compile Include="Assets\Scripts\Interaction Scripts\TriggerDialog.cs" />
      <Compile Include="Assets\Scripts\Interaction Scripts\TuvaInterations.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
      <Compile Include="Assets\Scripts\Movement_player.cs" />

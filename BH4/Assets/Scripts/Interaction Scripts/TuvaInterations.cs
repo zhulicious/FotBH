@@ -5,6 +5,7 @@ public class TuvaInterations : MonoBehaviour {
 
 	public GameObject eButton;
 	public GameObject chatSystem;
+	public GameObject dialog;
 	public enum doing{noInteraction, canInteract, alreadyInteracting};
 	public doing tuvaDoing = doing.noInteraction;
 	GameObject currentInteractionObject;
@@ -22,7 +23,10 @@ public class TuvaInterations : MonoBehaviour {
 			//chatSystem.GetComponent<ChatSystem>().CharacterTalk(col.gameObject, chat, null, null);
 			col.gameObject.SetActive(false);
 		}else if(currentTag == "Event"){
-			//event happen
+			//event happen ( cut scene)
+		}else if (currentTag == "Dialog"){
+			dialog.GetComponent<Dialogs>().EventDialog(col.gameObject);
+			col.gameObject.SetActive(false);
 		}
 		currentInteractionObject = col.gameObject;
 		if(tuvaDoing == doing.noInteraction || tuvaDoing != doing.alreadyInteracting){
