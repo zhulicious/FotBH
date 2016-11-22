@@ -20,7 +20,6 @@ public class MenuScript : MonoBehaviour {
         credits_button = GameObject.Find("Credits");
         exit_button = GameObject.Find("Exit");
         return_button = GameObject.Find("Return");
-        Debug.Log(play_button.name + ", " + credits_button.name + ", " + exit_button.name);
 
         menu_UI = canvas.transform.GetChild(0).gameObject;
         credits_UI = canvas.transform.GetChild(1).gameObject;
