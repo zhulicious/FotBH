@@ -102,6 +102,7 @@
      <Compile Include="Assets\Unity\Standard Assets\Utility\TimedObjectDestructor.cs" />
      <Compile Include="Assets\Unity\Standard Assets\Utility\WaypointCircuit.cs" />
      <Compile Include="Assets\Unity\Standard Assets\Utility\WaypointProgressTracker.cs" />
+     <None Include="Assets\Audio\SoundFX\Credit.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
