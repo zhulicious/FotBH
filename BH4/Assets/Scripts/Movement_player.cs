@@ -9,10 +9,11 @@ public class Movement_player : MonoBehaviour
     SpriteRenderer sprite;
     //BoxCollider2D collider;
 	public float runSpeed = 1.2f;
-	public float groundSpeed = 0.5f;
+	public float groundSpeed = 0.03f;
 	public float frontGroundSpeed = 1f;
     public float jumpSpeed = 3f;
     public float fallSpeed = 5f;
+	Vector3 localJumpDir;
     bool canJump;
     bool jumping;
     bool grounded;
@@ -148,11 +149,13 @@ public class Movement_player : MonoBehaviour
             if (other.transform.parent.GetChild(0) == other.transform)
             {
                 jumpDirection = other.transform.parent.GetChild(1).gameObject.transform.position;
+				localJumpDir = other.transform.parent.GetChild(1).gameObject.transform.localPosition;
                 jumpStart = other.transform.parent.GetChild(0).gameObject.transform.position;
             }
             else
             {
                 jumpDirection = other.transform.parent.GetChild(0).gameObject.transform.position;
+				localJumpDir = other.transform.parent.GetChild(0).gameObject.transform.localPosition;
                 jumpStart = other.transform.parent.GetChild(1).gameObject.transform.position;
             }
             Debug.Log("Jump Spot Enter " + gameObject);
@@ -173,8 +176,9 @@ public class Movement_player : MonoBehaviour
         jumping = true;
         rigi.gravityScale = 0;
         //collider.enabled = false;
-        if (jumpDirection.x > 0)
+		if (localJumpDir.x > 0)
         {
+			Debug.Log(localJumpDir.x);
             sprite.flipX = false;
         }
         else

@@ -49,6 +49,7 @@
      <Compile Include="Assets\Main_Menu\Scripts\PCE_buttonScript.cs" />
      <Compile Include="Assets\Main_Menu\Scripts\TuvaButtonScript.cs" />
      <Compile Include="Assets\Main_Menu\Scripts\TuvaMenuScript.cs" />
+     <Compile Include="Assets\Scripts\AIAnimationScript.cs" />
      <Compile Include="Assets\Scripts\AI_Movement.cs" />
      <Compile Include="Assets\Scripts\Background\ScrollinBackground.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\ActivateMonster.cs" />
