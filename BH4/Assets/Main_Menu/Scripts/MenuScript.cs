@@ -14,15 +14,19 @@ public class MenuScript : MonoBehaviour {
     GameObject menu_UI;
     GameObject credits_UI;
 
+    public TuvaMenuScript tms;
+
     void Start ()
     {
+        menu_UI = canvas.transform.GetChild(0).gameObject;
+        credits_UI = canvas.transform.GetChild(1).gameObject;
+
         play_button = GameObject.Find("Play");
         credits_button = GameObject.Find("Credits");
         exit_button = GameObject.Find("Exit");
         return_button = GameObject.Find("Return");
 
-        menu_UI = canvas.transform.GetChild(0).gameObject;
-        credits_UI = canvas.transform.GetChild(1).gameObject;
+
         ChangeToCreditPanel("Menu");
     }
 
@@ -63,6 +67,7 @@ public class MenuScript : MonoBehaviour {
 
         if (value == "Credits")
         {
+            tms.AbortMission();
             play_button.gameObject.SetActive(false);
             credits_button.gameObject.SetActive(false);
             exit_button.gameObject.SetActive(false);

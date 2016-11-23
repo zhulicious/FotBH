@@ -2,7 +2,7 @@
 using System.Collections;
 
 /*
-*       This script will only be usedd for Tuva in the MAin Menu.
+*       This script will only be usedd for Tuva in the Main Menu.
 *
 */
 
@@ -10,6 +10,7 @@ public class TuvaMenuScript : MonoBehaviour {
 
     Transform tuva;
     float movingSpeed;
+    Vector3 tuvaStartPosition;
 
     public Vector3[] positions;
     public int positionsIndexer;
@@ -24,6 +25,7 @@ public class TuvaMenuScript : MonoBehaviour {
         tbs = GetComponent<TuvaButtonScript>();
         movingSpeed = 1.35f;
         StartCoroutine("GetTuvaMoving");
+        tuvaStartPosition = tuva.transform.position;
     }
 
     void Update ()
@@ -61,5 +63,7 @@ public class TuvaMenuScript : MonoBehaviour {
     public void AbortMission ()
     {
         StopCoroutine("GetTuvaMoving");
+        movingCharacter = false;
+        tuva.transform.position = tuvaStartPosition;
     }
 }
