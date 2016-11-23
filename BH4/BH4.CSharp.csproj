@@ -63,11 +63,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Main_Menu\Scripts\CreditsContent.cs" />
-    <Compile Include="Assets\Main_Menu\Scripts\MenuScript.cs" />
-    <Compile Include="Assets\Main_Menu\Scripts\PCE_buttonScript.cs" />
-    <Compile Include="Assets\Main_Menu\Scripts\TuvaButtonScript.cs" />
-    <Compile Include="Assets\Main_Menu\Scripts\TuvaMenuScript.cs" />
+    <Compile Include="Assets\MainMenu\Scripts\CreditsContent.cs" />
+    <Compile Include="Assets\MainMenu\Scripts\MenuScript.cs" />
+    <Compile Include="Assets\MainMenu\Scripts\PCE_buttonScript.cs" />
+    <Compile Include="Assets\MainMenu\Scripts\TuvaButtonScript.cs" />
+    <Compile Include="Assets\MainMenu\Scripts\TuvaMenuScript.cs" />
     <Compile Include="Assets\Scripts\AIAnimationScript.cs" />
     <Compile Include="Assets\Scripts\AI_Movement.cs" />
     <Compile Include="Assets\Scripts\AudioScripts\A_AudioTrigger.cs" />
@@ -86,7 +86,7 @@
     <Compile Include="Assets\Scripts\Movement_player.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Audio\SoundFX\Credit.txt" />
+    <None Include="Assets\Audio\Credit.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
