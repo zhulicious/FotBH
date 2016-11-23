@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class AudioTransition : MonoBehaviour {
 
@@ -35,22 +34,23 @@ public class AudioTransition : MonoBehaviour {
 	void Update () {
         if(exitingCave && !leftCave)
         {
-           Background_Two.volume = FadeAudioOut(track_two_volume, distanceBetweenTriggers);
+            Background_One.panStereo = Background_Two.volume = FadeAudioOut(track_two_volume, distanceBetweenTriggers);
            Background_One.volume = FadeAudioIn(distanceBetweenTriggers);
+           
         }
 	
 	}
     private float FadeAudioOut(float volume, float distance)
     {     
         float disTweenPlayerAndExit = Vector2.Distance(player.transform.position, fadeOut_End.transform.position);
-        float newVolume = volume *(disTweenPlayerAndExit / distanceBetweenTriggers);
+        float newVolume = volume * (disTweenPlayerAndExit / distanceBetweenTriggers) * (disTweenPlayerAndExit / distanceBetweenTriggers);
 
         return newVolume;
     }
     private float FadeAudioIn(float distance)
     {
         float disTweenPlayerAndStartTigger = Vector2.Distance(player.transform.position, fadeOut_Start.transform.position);
-        float newVolume = (disTweenPlayerAndStartTigger / distanceBetweenTriggers);
+        float newVolume = (disTweenPlayerAndStartTigger / distanceBetweenTriggers) * (disTweenPlayerAndStartTigger / distanceBetweenTriggers);
 
         return newVolume;
     }
