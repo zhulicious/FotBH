@@ -15,17 +15,21 @@ public class TuvaMenuScript : MonoBehaviour {
     public Vector3[] positions;
     public int positionsIndexer;
     bool movingCharacter = false;
-    bool reachedTargetPoint = false;
 
     TuvaButtonScript tbs;
 
     void Start ()
     {
         tuva = GameObject.Find("Tuva").transform;
+        tuvaStartPosition = tuva.transform.position;
         tbs = GetComponent<TuvaButtonScript>();
         movingSpeed = 1.35f;
+<<<<<<< HEAD
         StartCoroutine("GetTuvaMoving");
         tuvaStartPosition = tuva.transform.position;
+=======
+        StartCoroutine("TuvaMovingCoroutine");
+>>>>>>> master
     }
 
     void Update ()
@@ -36,7 +40,11 @@ public class TuvaMenuScript : MonoBehaviour {
         }
     }
 
+<<<<<<< HEAD
     IEnumerator GetTuvaMoving ()
+=======
+    IEnumerator TuvaMovingCoroutine ()
+>>>>>>> master
     {
         yield return new WaitForSeconds(1.0f);
         movingCharacter = true;
@@ -60,9 +68,15 @@ public class TuvaMenuScript : MonoBehaviour {
 
     }
 
+<<<<<<< HEAD
     public void AbortMission ()
     {
         StopCoroutine("GetTuvaMoving");
+=======
+    public void StopWalkingTuva()
+    {
+        StopCoroutine("TuvaMovingCoroutine");
+>>>>>>> master
         movingCharacter = false;
         tuva.transform.position = tuvaStartPosition;
     }
