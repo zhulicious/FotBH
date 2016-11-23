@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-
+﻿using UnityEngine; // This class is meant for the transition between the cave soundtrack and the forest soundtrack. A prefab of this class on a gameobject 
+                   // can be found in Assets/Prefabs/AudioPrefabs.
 public class AudioTransition : MonoBehaviour {
 
     private GameObject backgroundAudio;
@@ -10,10 +10,10 @@ public class AudioTransition : MonoBehaviour {
     private float track_one_volume;
     private float track_two_volume;
 
-    public AudioClip caveBackgroundAudio;
+    public AudioClip caveBackgroundAudio; //These clips can be find in Assets/Audio/Background.
     public AudioClip forestBackgroundAudio;
 
-    public GameObject fadeOut_Start; //<---Triggers
+    public GameObject fadeOut_Start; //<---Triggers, prefabs of these gameObjects can be found in Assets/Prefabs/AudioPrefabs.
     public GameObject fadeOut_End;
     private float distanceBetweenTriggers;
     
