@@ -3,6 +3,7 @@
 public class AudioTransition : MonoBehaviour {
 
     private GameObject backgroundAudio;
+    private AudioManager am_Ref;
 
     private AudioSource background_one;
     private AudioSource background_two;
@@ -10,8 +11,8 @@ public class AudioTransition : MonoBehaviour {
     private float track_one_volume;
     private float track_two_volume;
 
-    public AudioClip caveBackgroundAudio; //These clips can be find in Assets/Audio/Background.
-    public AudioClip forestBackgroundAudio;
+    private AudioClip caveBackgroundAudio; //These clips can be find in Assets/Audio/Background.
+    private AudioClip forestBackgroundAudio;
 
     public GameObject fadeOut_Start; //<---Triggers, prefabs of these gameObjects can be found in Assets/Prefabs/AudioPrefabs.
     public GameObject fadeOut_End;
@@ -28,6 +29,10 @@ public class AudioTransition : MonoBehaviour {
         distanceBetweenTriggers = Vector2.Distance(fadeOut_Start.transform.position, fadeOut_End.transform.position);
         track_one_volume = background_one.volume;
         track_two_volume = background_two.volume;
+
+        Background_One.clip = am_Ref.BackgroundTracks[1]; // <-ForestBackground.
+        Background_Two.clip = am_Ref.BackgroundTracks[0]; // <-CaveBackground.
+
     }
 	
 	
