@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/AxelTestRealm.unity
-=======
-- path: Assets/Scenes/trollskog_vs_1.unity
->>>>>>> master
+- path: Assets/Scenes/MainMenu.unity
   isLoaded: 1
   isActive: 1
