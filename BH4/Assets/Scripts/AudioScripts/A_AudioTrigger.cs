@@ -1,10 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using UnityEngine; //This class should be but on triggers, one close to the exit of the cave and the other right after leaving the cave. 
 
 public class A_AudioTrigger : MonoBehaviour {
 
     public AudioTransition at_Ref;
-    public bool isFadeOutStart;
+    public bool isFadeOutStart; // In the expector you check this if the trigger is the trigger right before the exit.
     
 
     void OnTriggerEnter2D(Collider2D col)

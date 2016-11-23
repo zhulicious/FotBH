@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-
+﻿using UnityEngine; // This class is meant for the transition between the cave soundtrack and the forest soundtrack. A prefab of this class on a gameobject 
+                   // can be found in Assets/Prefabs/AudioPrefabs.
 public class AudioTransition : MonoBehaviour {
 
     private GameObject backgroundAudio;
@@ -11,10 +10,10 @@ public class AudioTransition : MonoBehaviour {
     private float track_one_volume;
     private float track_two_volume;
 
-    public AudioClip caveBackgroundAudio;
+    public AudioClip caveBackgroundAudio; //These clips can be find in Assets/Audio/Background.
     public AudioClip forestBackgroundAudio;
 
-    public GameObject fadeOut_Start; //<---Triggers
+    public GameObject fadeOut_Start; //<---Triggers, prefabs of these gameObjects can be found in Assets/Prefabs/AudioPrefabs.
     public GameObject fadeOut_End;
     private float distanceBetweenTriggers;
     
@@ -35,22 +34,23 @@ public class AudioTransition : MonoBehaviour {
 	void Update () {
         if(exitingCave && !leftCave)
         {
-           Background_Two.volume = FadeAudioOut(track_two_volume, distanceBetweenTriggers);
+            Background_One.panStereo = Background_Two.volume = FadeAudioOut(track_two_volume, distanceBetweenTriggers);
            Background_One.volume = FadeAudioIn(distanceBetweenTriggers);
+           
         }
 	
 	}
     private float FadeAudioOut(float volume, float distance)
     {     
         float disTweenPlayerAndExit = Vector2.Distance(player.transform.position, fadeOut_End.transform.position);
-        float newVolume = volume *(disTweenPlayerAndExit / distanceBetweenTriggers);
+        float newVolume = volume * (disTweenPlayerAndExit / distanceBetweenTriggers) * (disTweenPlayerAndExit / distanceBetweenTriggers);
 
         return newVolume;
     }
     private float FadeAudioIn(float distance)
     {
         float disTweenPlayerAndStartTigger = Vector2.Distance(player.transform.position, fadeOut_Start.transform.position);
-        float newVolume = (disTweenPlayerAndStartTigger / distanceBetweenTriggers);
+        float newVolume = (disTweenPlayerAndStartTigger / distanceBetweenTriggers) * (disTweenPlayerAndStartTigger / distanceBetweenTriggers);
 
         return newVolume;
     }
