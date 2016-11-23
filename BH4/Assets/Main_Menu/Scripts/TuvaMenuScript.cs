@@ -23,7 +23,7 @@ public class TuvaMenuScript : MonoBehaviour {
         tuva = GameObject.Find("Tuva").transform;
         tbs = GetComponent<TuvaButtonScript>();
         movingSpeed = 1.35f;
-        StartCoroutine("ChangeBoolValues");
+        StartCoroutine("GetTuvaMoving");
     }
 
     void Update ()
@@ -34,9 +34,9 @@ public class TuvaMenuScript : MonoBehaviour {
         }
     }
 
-    IEnumerator ChangeBoolValues ()
+    IEnumerator GetTuvaMoving ()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         movingCharacter = true;
         tbs.DisplayKeyButtons(positionsIndexer);
         yield return new WaitUntil(() => tuva.position == positions[positionsIndexer]);
@@ -56,5 +56,10 @@ public class TuvaMenuScript : MonoBehaviour {
         yield return new WaitUntil(() => tuva.position == positions[positionsIndexer]);
         yield break;
 
+    }
+
+    public void AbortMission ()
+    {
+        StopCoroutine("GetTuvaMoving");
     }
 }

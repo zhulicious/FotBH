@@ -9,6 +9,7 @@ P C E = Play, Credits, Exit
 public class PCE_buttonScript : MonoBehaviour {
 
     public MenuScript menuScript;
+    public TuvaMenuScript tvms;
 	
     public void ActivateMe ()
     {
@@ -19,6 +20,7 @@ public class PCE_buttonScript : MonoBehaviour {
         }
         else if (currentName == "Credits")
         {
+            tvms.AbortMission();
             menuScript.ChangeToCreditPanel("Credits");
         }
         else if (currentName == "Exit")
@@ -28,6 +30,7 @@ public class PCE_buttonScript : MonoBehaviour {
         }
         else if (currentName == "Return")
         {
+            tvms.StartCoroutine("GetTuvaMoving");
             menuScript.ChangeToCreditPanel("Menu");
         }
     }

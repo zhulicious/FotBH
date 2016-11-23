@@ -47,6 +47,8 @@ public class MenuScript : MonoBehaviour {
 
     }
 
+
+
     public void ChangeToCreditPanel (string value)
     {
         if (value == "Menu")
