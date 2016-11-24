@@ -10,7 +10,7 @@ public class TuvaInterations : MonoBehaviour {
 	public GameObject dialog;
 	public enum doing{noInteraction, canInteract, alreadyInteracting};
 	public doing tuvaDoing = doing.noInteraction;
-	GameObject currentInteractionObject;
+	public GameObject currentInteractionObject;
 	string currentTag;
 	bool hasItem;
 
@@ -23,7 +23,8 @@ public class TuvaInterations : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col){
 		currentTag = col.gameObject.tag;
 		if(currentTag == "NPC_Talk"){
-			col.gameObject.GetComponent<Talk>().Conversation();
+			//col.gameObject.GetComponent<Talk>().Conversation();
+			dialog.GetComponent<Dialogs>().ChatDialog(col.transform.gameObject, col.transform.gameObject.GetComponent<TriggerDialog>().ReturnHostBubble());
 			//chatSystem.GetComponent<ChatSystem>().CharacterTalk(col.gameObject, chat, null, null);
 			col.gameObject.SetActive(false);
 		}else if(currentTag == "CutScene"){
@@ -39,8 +40,9 @@ public class TuvaInterations : MonoBehaviour {
 		currentInteractionObject = col.gameObject;
 		if(tuvaDoing == doing.noInteraction || tuvaDoing != doing.alreadyInteracting){
 			if(currentTag == "Tuva_Talk"){
+				
 				tuvaDoing = doing.canInteract;
-			}else if(currentTag == "JumpSpot"){
+			}else if(currentTag == "JumpSpot"){	
 				tuvaDoing = doing.canInteract;
 
 				//CanInteractAgain();
@@ -48,7 +50,7 @@ public class TuvaInterations : MonoBehaviour {
 				tuvaDoing = doing.canInteract;
 
 			}else if(currentTag == "Use_Item"){
-				Debug.Log("found use");
+				//Debug.Log("found use");
 				tuvaDoing = doing.canInteract;
 			}
 		}
@@ -56,6 +58,10 @@ public class TuvaInterations : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D col){
 		if(tuvaDoing != doing.alreadyInteracting){
 			tuvaDoing = doing.noInteraction;
+		}
+		if(col.transform.gameObject.tag == "Obstacle"){
+			Debug.Log("exit objasctle");
+			col.transform.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
 		}
 		currentInteractionObject = null;
 
@@ -68,7 +74,7 @@ public class TuvaInterations : MonoBehaviour {
 	}
 	public void CanInteractAgain(){
 		if(currentInteractionObject != null){
-			Debug.Log("can interact");
+			//Debug.Log("can interact");
 			tuvaDoing = doing.canInteract;
 		}else{
 			tuvaDoing = doing.noInteraction;
@@ -83,19 +89,25 @@ public class TuvaInterations : MonoBehaviour {
 		tuvaDoing = doing.alreadyInteracting;
 		DeactivateInteractionButton();
 		if(currentTag == "Tuva_Talk"){
+			dialog.GetComponent<Dialogs>().ChatDialog(currentInteractionObject, currentInteractionObject.GetComponent<TriggerDialog>().ReturnHostBubble());
 			//Should return Strings to say
-			chatSystem.GetComponent<ChatSystem>().CharacterTalk(gameObject, "Who are\n you?", "Im Tuva", null);
+			//chatSystem.GetComponent<ChatSystem>().CharacterTalk(gameObject, "Who are\n you?", "Im Tuva", null);
 		}else if(currentTag == "JumpSpot"){
+			GetComponent<Movement_player>().EButtonPressedForJump();
+			currentInteractionObject.GetComponent<JumpSpot>().ReturnObstacle().GetComponent<BoxCollider2D>().isTrigger = true;
 			StartCoroutine(WaitTime(2.0f));
 		}else if(currentTag == "Pick_Up"){
 			hasItem = true;
 			currentInteractionObject.SetActive(false);
+			currentInteractionObject = null;
 			CanInteractAgain();
 		}else if(currentTag == "Use_Item"){
 			if(hasItem){
 				//remove Object / add object
 				chatSystem.GetComponent<ChatSystem>().CharacterTalk(gameObject, "Lets start\ndigging", null, null);
 				currentInteractionObject.SetActive(false);
+				currentInteractionObject = null;
+
 			}else{
 				chatSystem.GetComponent<ChatSystem>().CharacterTalk(gameObject, "Need something\nto dig", null, null);
 			}
