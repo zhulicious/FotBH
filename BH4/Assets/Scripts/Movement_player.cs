@@ -158,7 +158,7 @@ public class Movement_player : MonoBehaviour
 				localJumpDir = other.transform.parent.GetChild(0).gameObject.transform.localPosition;
                 jumpStart = other.transform.parent.GetChild(1).gameObject.transform.position;
             }
-            Debug.Log("Jump Spot Enter " + gameObject);
+           // Debug.Log("Jump Spot Enter " + gameObject);
 		}
 	}
 
@@ -167,7 +167,7 @@ public class Movement_player : MonoBehaviour
         if (other.gameObject.tag == "JumpSpot")
         {
             canJump = false;
-            Debug.Log("Jump Spot Exit " + gameObject);
+            //Debug.Log("Jump Spot Exit " + gameObject);
         }
     }
 

@@ -52,6 +52,8 @@
      <Compile Include="Assets\Scripts\AIAnimationScript.cs" />
      <Compile Include="Assets\Scripts\AI_Movement.cs" />
      <Compile Include="Assets\Scripts\Background\ScrollinBackground.cs" />
+     <Compile Include="Assets\Scripts\CS_Guldlock.cs" />
+     <Compile Include="Assets\Scripts\DontDestroy.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\ActivateMonster.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\EnemyBehaviour.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\SafeZone.cs" />
