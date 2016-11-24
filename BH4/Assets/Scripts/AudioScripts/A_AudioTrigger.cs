@@ -6,13 +6,11 @@ public class A_AudioTrigger : MonoBehaviour {
     private AudioManager am_Ref;
     public bool isFadeOutStart; // In the expector you check this if the trigger is the trigger right before the exit.
 
-    private void Start()
+    public void SetAT_RefAndAM_Ref(AudioTransition x, AudioManager m)
     {
-        at_Ref = GameObject.Find("AudioManager").GetComponent<AudioTransition>();
-        am_Ref = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        at_Ref = x;
+        am_Ref = m;
     }
-
-    
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -26,22 +24,22 @@ public class A_AudioTrigger : MonoBehaviour {
                 if (!at_Ref.ExitingCave)
                 {
                   
-                    at_Ref.Background_One.Play();
+                    am_Ref.Background_One.Play();
                     at_Ref.ExitingCave = true;
                 }
                 else
                 {
                   
                     at_Ref.ExitingCave = false;
-                    at_Ref.Background_One.Stop();
+                    am_Ref.Background_One.Stop();
 
                 }
             }
             else
             {
                 
-                at_Ref.Background_Two.Stop();
-                at_Ref.Background_Two.clip = am_Ref.Miscellaneous[1]; 
+                am_Ref.Background_Two.Stop();
+
                 at_Ref.LeftCave = true;
             }
            
