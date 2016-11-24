@@ -2,16 +2,14 @@
                    // can be found in Assets/Prefabs/AudioPrefabs.
 public class AudioTransition : MonoBehaviour {
 
-    private GameObject backgroundAudio;
-
-    private AudioSource background_one;
-    private AudioSource background_two;
+  
+    private AudioManager am_Ref;
 
     private float track_one_volume;
     private float track_two_volume;
 
-    public AudioClip caveBackgroundAudio; //These clips can be find in Assets/Audio/Background.
-    public AudioClip forestBackgroundAudio;
+    private AudioClip caveBackgroundAudio; //These clips can be find in Assets/Audio/Background.
+    private AudioClip forestBackgroundAudio;
 
     public GameObject fadeOut_Start; //<---Triggers, prefabs of these gameObjects can be found in Assets/Prefabs/AudioPrefabs.
     public GameObject fadeOut_End;
@@ -22,20 +20,26 @@ public class AudioTransition : MonoBehaviour {
     public GameObject player;
 
 	void Start () {
-        backgroundAudio = transform.GetChild(0).gameObject;
-        background_one = backgroundAudio.transform.GetChild(0).gameObject.GetComponent<AudioSource>();
-        background_two = backgroundAudio.transform.GetChild(1).gameObject.GetComponent<AudioSource>();
+        fadeOut_End.GetComponent<A_AudioTrigger>().SetAT_RefAndAM_Ref(this, AM_Ref);
+        fadeOut_Start.GetComponent<A_AudioTrigger>().SetAT_RefAndAM_Ref(this, AM_Ref);
+
+        am_Ref = GetComponent<AudioManager>(); //Works.
+       
         distanceBetweenTriggers = Vector2.Distance(fadeOut_Start.transform.position, fadeOut_End.transform.position);
-        track_one_volume = background_one.volume;
-        track_two_volume = background_two.volume;
+        track_one_volume = am_Ref.Background_One.volume;
+        track_two_volume = am_Ref.Background_Two.volume;
+
+        AM_Ref.Background_One.clip = am_Ref.BackgroundTracks[1]; // <-ForestBackground.
+        AM_Ref.Background_Two.clip = am_Ref.BackgroundTracks[0]; // <-CaveBackground.
+        AM_Ref.Background_Two.Play();
     }
 	
 	
 	void Update () {
         if(exitingCave && !leftCave)
         {
-            Background_One.panStereo = Background_Two.volume = FadeAudioOut(track_two_volume, distanceBetweenTriggers);
-           Background_One.volume = FadeAudioIn(distanceBetweenTriggers);
+            AM_Ref.Background_One.panStereo = AM_Ref.Background_Two.volume = FadeAudioOut(track_two_volume, distanceBetweenTriggers);
+           AM_Ref.Background_One.volume = FadeAudioIn(distanceBetweenTriggers);
            
         }
 	
@@ -57,7 +61,6 @@ public class AudioTransition : MonoBehaviour {
 
     public bool ExitingCave {get { return exitingCave;} set { exitingCave = value;}}
     public bool LeftCave { get { return leftCave; } set { leftCave = value;} }
-    public AudioSource Background_One { get{ return background_one; } set { background_one = value;} }
-    public AudioSource Background_Two { get { return background_two; } set { background_two = value; } }
+    public AudioManager AM_Ref { get { return am_Ref; } set { am_Ref = value; } }
 
 }
