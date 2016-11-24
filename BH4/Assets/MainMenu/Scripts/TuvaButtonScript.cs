@@ -21,18 +21,21 @@ public class TuvaButtonScript : MonoBehaviour {
     {
         if (activeButton == 0)
         {
+            D_Image.SetActive(false);
+            A_Image.SetActive(false);
+            E_Image.SetActive(false);
+        }
+        if (activeButton == 1)
+        {
             D_Image.SetActive(true);
         }
-        else { D_Image.SetActive(false); }
-        if (activeButton == 1)
+        if (activeButton == 2)
         {
             A_Image.SetActive(true);
         }
-        else { A_Image.SetActive(false); }
-        if (activeButton == 2)
+        if (activeButton == 3)
         {
             E_Image.SetActive(true);
         }
-        else { E_Image.SetActive(false); }
     }
 }

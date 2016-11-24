@@ -4,6 +4,8 @@ using System.Collections;
 /*
 *       This script will only be usedd for Tuva in the Main Menu.
 *
+*       Tuva's movement method (IEnumerator GetTuvaMoving) is based on the "positionIndexer" number. 
+*
 */
 
 public class TuvaMenuScript : MonoBehaviour {
@@ -11,19 +13,27 @@ public class TuvaMenuScript : MonoBehaviour {
     Transform tuva;
     float movingSpeed;
     Vector3 tuvaStartPosition;
+    SpriteRenderer tuva_sprite;
 
     public Vector3[] positions;
     public int positionsIndexer;
     bool movingCharacter = false;
-
+    
     TuvaButtonScript tbs;
+    int keyIndexer;
+    int defaultKeyIndexer = 0;
+
+    Animator tuva_animator;
 
     void Start ()
     {
         tuva = GameObject.Find("Tuva").transform;
+        tuva_sprite = tuva.GetComponent<SpriteRenderer>();
         tuvaStartPosition = tuva.transform.position;
         tbs = GetComponent<TuvaButtonScript>();
-        movingSpeed = 1.35f;
+        tuva_animator = GetComponent<Animator>();
+        movingSpeed = 1.5f;
+        keyIndexer = positionsIndexer + 1;
         StartCoroutine("GetTuvaMoving");
 
     }
@@ -41,22 +51,33 @@ public class TuvaMenuScript : MonoBehaviour {
     {
         yield return new WaitForSeconds(1.0f);
         movingCharacter = true;
-        tbs.DisplayKeyButtons(positionsIndexer);
+        tuva_animator.SetBool("Run", true);
+        tbs.DisplayKeyButtons(keyIndexer);
         yield return new WaitUntil(() => tuva.position == positions[positionsIndexer]);
+        tbs.DisplayKeyButtons(defaultKeyIndexer);
         movingCharacter = false;
+        tuva_animator.SetBool("Run", false);
         positionsIndexer++;
+        keyIndexer++;
+        tuva_sprite.flipX = true;
         yield return new WaitForSeconds(2.0f);
         movingCharacter = true;
-        tbs.DisplayKeyButtons(positionsIndexer);
+        tuva_animator.SetBool("Run", true);
+        tbs.DisplayKeyButtons(keyIndexer);
         yield return new WaitUntil(() => tuva.position == positions[positionsIndexer]);
         movingCharacter = false;
+        tuva_animator.SetBool("Run", false);
         positionsIndexer++;
+        keyIndexer++;
+        tbs.DisplayKeyButtons(defaultKeyIndexer);
+        tuva_sprite.flipX = false;
         yield return new WaitForSeconds(2.0f);
         movingCharacter = true;
-       /* tbs.DisplayKeyButtons(positionsIndexer);*/ Debug.Log("Activate E-button");
+        tuva_animator.SetBool("Run", true);
         yield return new WaitUntil(() => tuva.position == positions[positionsIndexer]);
         movingCharacter = false;
-        yield return new WaitUntil(() => tuva.position == positions[positionsIndexer]);
+        tuva_animator.SetBool("Run", false);
+        tbs.DisplayKeyButtons(keyIndexer);
         yield break;
 
     }
