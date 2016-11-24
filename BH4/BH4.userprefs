@@ -2,13 +2,17 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AI_Movement.cs">
     <Files>
-      <File FileName="Assets\Scripts\Movement_player.cs" Line="81" Column="41" />
-      <File FileName="Assets\Scripts\Interaction Scripts\TuvaInterations.cs" Line="25" Column="35" />
-      <File FileName="Assets\Scripts\Interaction Scripts\Talk.cs" Line="11" Column="20" />
-      <File FileName="Assets\Scripts\Interaction Scripts\Dialogs.cs" Line="38" Column="69" />
-      <File FileName="Assets\Scripts\Interaction Scripts\ChatSystem.cs" Line="14" Column="17" />
-      <File FileName="Assets\Scripts\Interaction Scripts\TriggerDialog.cs" Line="7" Column="33" />
-      <File FileName="Assets\Scripts\AI_Movement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Movement_player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Interaction Scripts\TuvaInterations.cs" Line="94" Column="105" />
+      <File FileName="Assets\Scripts\Interaction Scripts\Talk.cs" Line="7" Column="28" />
+      <File FileName="Assets\Scripts\Interaction Scripts\Dialogs.cs" Line="64" Column="31" />
+      <File FileName="Assets\Scripts\Interaction Scripts\ChatSystem.cs" Line="45" Column="6" />
+      <File FileName="Assets\Scripts\Interaction Scripts\TriggerDialog.cs" Line="13" Column="3" />
+      <File FileName="Assets\Scripts\AI_Movement.cs" Line="12" Column="28" />
+      <File FileName="Assets\Scripts\AIAnimationScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DontDestroy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CS_Guldlock.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\JumpSpot.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

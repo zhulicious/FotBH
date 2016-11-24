@@ -45,13 +45,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Main_Menu\Scripts\MenuScript.cs" />
-     <Compile Include="Assets\Main_Menu\Scripts\PCE_buttonScript.cs" />
-     <Compile Include="Assets\Main_Menu\Scripts\TuvaButtonScript.cs" />
-     <Compile Include="Assets\Main_Menu\Scripts\TuvaMenuScript.cs" />
+     <Compile Include="Assets\MainMenu\Scripts\CreditsContent.cs" />
+     <Compile Include="Assets\MainMenu\Scripts\MenuScript.cs" />
+     <Compile Include="Assets\MainMenu\Scripts\PCE_buttonScript.cs" />
+     <Compile Include="Assets\MainMenu\Scripts\TuvaButtonScript.cs" />
+     <Compile Include="Assets\MainMenu\Scripts\TuvaMenuScript.cs" />
      <Compile Include="Assets\Scripts\AIAnimationScript.cs" />
      <Compile Include="Assets\Scripts\AI_Movement.cs" />
+     <Compile Include="Assets\Scripts\AudioScripts\A_AudioTrigger.cs" />
+     <Compile Include="Assets\Scripts\AudioScripts\AudioTransition.cs" />
      <Compile Include="Assets\Scripts\Background\ScrollinBackground.cs" />
+     <Compile Include="Assets\Scripts\CS_Guldlock.cs" />
+     <Compile Include="Assets\Scripts\DontDestroy.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\ActivateMonster.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\EnemyBehaviour.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\SafeZone.cs" />
@@ -61,49 +66,10 @@
      <Compile Include="Assets\Scripts\Interaction Scripts\Talk.cs" />
      <Compile Include="Assets\Scripts\Interaction Scripts\TriggerDialog.cs" />
      <Compile Include="Assets\Scripts\Interaction Scripts\TuvaInterations.cs" />
+     <Compile Include="Assets\Scripts\JumpSpot.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
      <Compile Include="Assets\Scripts\Movement_player.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\2D\Scripts\Camera2DFollow.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\2D\Scripts\CameraFollow.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\2D\Scripts\Platformer2DUserControl.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\2D\Scripts\PlatformerCharacter2D.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\2D\Scripts\Restarter.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\CrossPlatformInput\Scripts\InputAxisScrollbar.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\CrossPlatformInput\Scripts\MobileControlRig.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\ActivateTrigger.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\AlphaButtonClickMask.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\AutoMobileShaderSwitch.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\AutoMoveAndRotate.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\CameraRefocus.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\CurveControlledBob.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\DragRigidbody.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\DynamicShadowSettings.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\EventSystemChecker.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\FOVKick.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\FPSCounter.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\FollowTarget.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\ForcedReset.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\LerpControlledBob.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\ObjectResetter.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\ParticleSystemDestroyer.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\PlatformSpecificContent.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\SimpleActivatorMenu.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\SimpleMouseRotator.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\SmoothFollow.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\TimedObjectActivator.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\TimedObjectDestructor.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\WaypointCircuit.cs" />
-     <Compile Include="Assets\Unity\Standard Assets\Utility\WaypointProgressTracker.cs" />
-     <None Include="Assets\Audio\SoundFX\Credit.txt" />
+     <None Include="Assets\Audio\Credit.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
