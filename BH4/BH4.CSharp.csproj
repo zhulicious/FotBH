@@ -71,8 +71,11 @@
     <Compile Include="Assets\Scripts\AIAnimationScript.cs" />
     <Compile Include="Assets\Scripts\AI_Movement.cs" />
     <Compile Include="Assets\Scripts\AudioScripts\A_AudioTrigger.cs" />
+    <Compile Include="Assets\Scripts\AudioScripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\AudioScripts\AudioTransition.cs" />
     <Compile Include="Assets\Scripts\Background\ScrollinBackground.cs" />
+    <Compile Include="Assets\Scripts\CS_Guldlock.cs" />
+    <Compile Include="Assets\Scripts\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\ActivateMonster.cs" />
     <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\SafeZone.cs" />
@@ -82,11 +85,9 @@
     <Compile Include="Assets\Scripts\Interaction Scripts\Talk.cs" />
     <Compile Include="Assets\Scripts\Interaction Scripts\TriggerDialog.cs" />
     <Compile Include="Assets\Scripts\Interaction Scripts\TuvaInterations.cs" />
+    <Compile Include="Assets\Scripts\JumpSpot.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\Movement_player.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Audio\Credit.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
