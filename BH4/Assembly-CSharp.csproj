@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\AIAnimationScript.cs" />
      <Compile Include="Assets\Scripts\AI_Movement.cs" />
      <Compile Include="Assets\Scripts\AudioScripts\A_AudioTrigger.cs" />
+     <Compile Include="Assets\Scripts\AudioScripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\AudioScripts\AudioTransition.cs" />
      <Compile Include="Assets\Scripts\Background\ScrollinBackground.cs" />
      <Compile Include="Assets\Scripts\CS_Guldlock.cs" />
@@ -69,7 +70,6 @@
      <Compile Include="Assets\Scripts\JumpSpot.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
      <Compile Include="Assets\Scripts\Movement_player.cs" />
-     <None Include="Assets\Audio\Credit.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
