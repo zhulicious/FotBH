@@ -22,6 +22,7 @@ public class Movement_player : MonoBehaviour
     enum States { Idle, Right, Left, Jump, Fall};
 	public GameObject groundObject;
 	public GameObject frontGroundObject;
+	States movement;
 
 	// Use this for initialization
 	void Awake () 
@@ -38,7 +39,7 @@ public class Movement_player : MonoBehaviour
 	// Update is called once per frame.
 	void FixedUpdate () 
 	{
-        States movement = States.Idle;
+        movement = States.Idle;
 
         if (jumping)
         {
@@ -59,11 +60,11 @@ public class Movement_player : MonoBehaviour
                 movement = States.Idle;
             }
 
-            if (Input.GetKey(KeyCode.E) && canJump)
+           /* if (Input.GetKey(KeyCode.E) && canJump)
             {
                 jump();
                 movement = States.Jump;
-            }
+            }*/
             if (rigi.velocity.y < -3)
             {
                 movement = States.Fall;
@@ -78,6 +79,12 @@ public class Movement_player : MonoBehaviour
         MoveCases (movement);
         //Debug.Log(movement);
     }
+	public void EButtonPressedForJump(){
+		if(canJump){
+			jump();
+			movement = States.Jump;
+		}
+	}
     //Vilken animation ska spelas
     void MoveCases (States movementCase)
 	{
@@ -158,7 +165,7 @@ public class Movement_player : MonoBehaviour
 				localJumpDir = other.transform.parent.GetChild(0).gameObject.transform.localPosition;
                 jumpStart = other.transform.parent.GetChild(1).gameObject.transform.position;
             }
-            Debug.Log("Jump Spot Enter " + gameObject);
+           // Debug.Log("Jump Spot Enter " + gameObject);
 		}
 	}
 
@@ -167,7 +174,7 @@ public class Movement_player : MonoBehaviour
         if (other.gameObject.tag == "JumpSpot")
         {
             canJump = false;
-            Debug.Log("Jump Spot Exit " + gameObject);
+            //Debug.Log("Jump Spot Exit " + gameObject);
         }
     }
 
