@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/trollskog_vs_1.unity
-=======
-- path: Assets/Scenes/AxelTestRealm.unity
->>>>>>> refs/remotes/origin/master
+- path: Assets/Scenes/OutsideSlice.unity
   isLoaded: 1
   isActive: 1

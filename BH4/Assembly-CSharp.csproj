@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\AIAnimationScript.cs" />
      <Compile Include="Assets\Scripts\AI_Movement.cs" />
      <Compile Include="Assets\Scripts\AudioScripts\A_AudioTrigger.cs" />
+     <Compile Include="Assets\Scripts\AudioScripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\AudioScripts\AudioTransition.cs" />
      <Compile Include="Assets\Scripts\Background\ScrollinBackground.cs" />
      <Compile Include="Assets\Scripts\CS_Guldlock.cs" />
@@ -69,7 +70,17 @@
      <Compile Include="Assets\Scripts\JumpSpot.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
      <Compile Include="Assets\Scripts\Movement_player.cs" />
-     <None Include="Assets\Audio\Credit.txt" />
+     <Compile Include="Assets\Scripts\OutsideSlice\ChoiceTree.cs" />
+     <Compile Include="Assets\Scripts\OutsideSlice\ClickOption.cs" />
+     <None Include="Assets\Resources\Text\Kallra_Stage1_header.txt" />
+     <None Include="Assets\Resources\Text\TheNeck_main.txt" />
+     <None Include="Assets\Resources\Text\TheNeck_header.txt" />
+     <None Include="Assets\Resources\Text\TheNeck_choice_2.txt" />
+     <None Include="Assets\Resources\Text\TheNeck_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Kallra_Stage1_choice_1.txt" />
+     <None Include="Assets\Resources\Text\TheNeck_choice_3.txt" />
+     <None Include="Assets\Resources\Text\Kallra_Stage1_main.txt" />
+     <None Include="Assets\Resources\Text\Kallra_Stage1_choice_2.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
