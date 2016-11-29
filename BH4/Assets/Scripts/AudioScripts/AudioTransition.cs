@@ -26,20 +26,20 @@ public class AudioTransition : MonoBehaviour {
         am_Ref = GetComponent<AudioManager>(); //Works.
        
         distanceBetweenTriggers = Vector2.Distance(fadeOut_Start.transform.position, fadeOut_End.transform.position);
-        track_one_volume = am_Ref.Background_One.volume;
-        track_two_volume = am_Ref.Background_Two.volume;
+      //  track_one_volume = am_Ref.Background_One.volume;
+       // track_two_volume = am_Ref.Background_Two.volume;
 
-        AM_Ref.Background_One.clip = am_Ref.BackgroundTracks[1]; // <-ForestBackground.
-        AM_Ref.Background_Two.clip = am_Ref.BackgroundTracks[0]; // <-CaveBackground.
-        AM_Ref.Background_Two.Play();
+       // AM_Ref.Background_One.clip = am_Ref.BackgroundTracks[1]; // <-ForestBackground.
+       // AM_Ref.Background_Two.clip = am_Ref.BackgroundTracks[0]; // <-CaveBackground.
+       // AM_Ref.Background_Two.Play();
     }
 	
 	
 	void Update () {
         if(exitingCave && !leftCave)
         {
-            AM_Ref.Background_One.panStereo = AM_Ref.Background_Two.volume = FadeAudioOut(track_two_volume, distanceBetweenTriggers);
-           AM_Ref.Background_One.volume = FadeAudioIn(distanceBetweenTriggers);
+          //  AM_Ref.Background_One.panStereo = AM_Ref.Background_Two.volume = FadeAudioOut(track_two_volume, distanceBetweenTriggers);
+          // AM_Ref.Background_One.volume = FadeAudioIn(distanceBetweenTriggers);
            
         }
 	
