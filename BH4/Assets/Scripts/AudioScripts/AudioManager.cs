@@ -2,12 +2,6 @@
 
 public class AudioManager : MonoBehaviour {
     private AudioSource audioManagerSpeaker;
-    private AudioSource background_one;
-    private AudioSource background_two;
-
-    private GameObject backgroundAudio;
-
-    private AudioClip themeSong;
 
     private AudioClip[] backgroundTracks;
 
@@ -22,21 +16,28 @@ public class AudioManager : MonoBehaviour {
     private TuvaVoice tuvaVoiceSource;
     private TuvaSteps tuvaStepsSource;
 
+    private DIA _dia;
+    private FX _fx;
+    private Foley _folay;
+    private ATM _atm;
+    private MUS _mus;
+
+
+
+
     void Awake()
     {
-    
-        backgroundAudio = transform.GetChild(0).gameObject;
-        background_one = backgroundAudio.transform.GetChild(0).gameObject.GetComponent<AudioSource>();
-        background_two = backgroundAudio.transform.GetChild(1).gameObject.GetComponent<AudioSource>();
+
+       
 
         audioManagerSpeaker = transform.GetChild(1).GetComponent<AudioSource>();
-        audioManagerSpeaker.clip = themeSong;
+       //udioManagerSpeaker.clip = themeSong;
 
-        themeSong = Resources.Load<AudioClip>("Audio/Theme/Audio_Spelman");
-        if (themeSong == null) { Debug.Log("themeSong = null"); }
-    
-        backgroundTracks = Resources.LoadAll<AudioClip>("Audio/BackgroundTracks"); 
-        if(backgroundTracks == null) { Debug.Log("backgroundTracks = null"); }
+       //hemeSong = Resources.Load<AudioClip>("Audio/Theme/Audio_Spelman");
+       //f (themeSong == null) { Debug.Log("themeSong = null"); }
+
+        backgroundTracks = Resources.LoadAll<AudioClip>("Audio/BackgroundTracks");
+        if (backgroundTracks == null) { Debug.Log("backgroundTracks = null"); }
 
         caveFootsteps = Resources.LoadAll<AudioClip>("Audio/Actor/Tuva/FootSteps/Cave");
         puddleFootsteps = Resources.LoadAll<AudioClip>("Audio/Actor/Tuva/FootSteps/Puddles");
@@ -58,7 +59,7 @@ public class AudioManager : MonoBehaviour {
     public struct TuvaAudioPackage
     {
         public TuvaSteps tuvaStepsPack;
-        public TuvaVoice tuvaVoicePack;      
+        public TuvaVoice tuvaVoicePack;
     }
     public struct TuvaVoice
     {
@@ -72,9 +73,9 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayOrStopTheme(bool b) // if b is true "ThemeSong" will play. If b is false "ThemeSong" will stop;
     {
-        if (audioManagerSpeaker.clip.name != themeSong.name)
+      //if (audioManagerSpeaker.clip.name != themeSong.name)
         {
-            audioManagerSpeaker.clip = themeSong;
+        //  audioManagerSpeaker.clip = themeSong;
             if (b)
             {
                 audioManagerSpeaker.Play();
@@ -85,20 +86,57 @@ public class AudioManager : MonoBehaviour {
             }
         }
     }
-    
+
 
     //Properties
 
-    public AudioClip ThemeSong { get { return themeSong; } set { themeSong = value; } }
+   //ublic AudioClip ThemeSong { get { return themeSong; } set { themeSong = value; } }
     public AudioClip[] BackgroundTracks { get { return backgroundTracks; } set { backgroundTracks = value; } }
     public AudioClip[] Miscellaneous { get { return miscellaneous; } set { miscellaneous = value; } } // "Audio_BranchSnap", "Audio_OwlHooting", "Audio_RustlingBushes", "Audio_SearchingInBushes", "Audio_TwigSnap".
     public AudioClip[] MenuSounds { get { return menuSounds; } set { menuSounds = value; } } // "Audio_BackEscBtn", "Audio_ClickBtn", "Audio_MouseOverBtn".
 
     public TuvaAudioPackage TuvaAudioPack { get { return tuvaAudioPack; } set { tuvaAudioPack = value; } } // This struct has all sounds relating to Tuva.
 
-    public GameObject BackgroundAudio { get { return backgroundAudio; } set { backgroundAudio = value; } }
+   
 
-    public AudioSource Background_One { get { return background_one; } set { background_one = value; } }
-    public AudioSource Background_Two { get { return background_two; } set { background_two = value; } }
-    public AudioSource AudioManagerSpeaker { get { return audioManagerSpeaker; } set { audioManagerSpeaker = value;} }
+   
+   
+    public AudioSource AudioManagerSpeaker { get { return audioManagerSpeaker; } set { audioManagerSpeaker = value; } }
+
+    public DIA _DIA { get { return _dia; } set { _dia = value; } }
+    public FX _FX { get { return _fx; } set { _fx = value; } }
+    public Foley _Folay {get{return _folay;} set{_folay = value;}}
+    public ATM _ATM {get{return _atm;} set{_atm = value;}}
+    public MUS _Mus {get{return _mus ;} set{_mus = value;}}
+
+
 }
+
+public struct DIA
+{
+    public AudioSource playerAudioReference;
+    public AudioSource nPC_AudioReference;
+}
+public struct FX
+{
+
+}
+public struct Foley
+{
+    public AudioSource playerAudioReference;
+    public AudioSource nPCAudioReference;
+}
+public struct ATM
+{
+    public AudioSource currentTrack;
+    public AudioSource nextTrack;
+}
+public struct MUS
+{
+    public AudioSource melody;
+    public AudioSource rhytm;
+    public AudioSource bass;
+    public AudioSource percussion;
+}
+
+
