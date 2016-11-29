@@ -7,6 +7,8 @@ public class StateMachine : MonoBehaviour {
 
     private IStateBase activeState;
     public AudioManager _audioManager;
+    public GameObject player;
+    
 
 
     public bool debugLog; //If this is true Debug.Logs will be shown in the console.

@@ -5,8 +5,9 @@ namespace Assets.Code.States
 {
     public class SliceState : IStateBase
     {
-        private StateMachine _StateMachine;
+        private StateMachine _stateMachine;
         private AudioManager _audioManager;
+        private AudioKing audioKing;
 
         private bool debugLog;
 
@@ -19,7 +20,12 @@ namespace Assets.Code.States
 
             if (debugLog) Debug.Log("Constructing SliceState");
 
-            _StateMachine = stateMachine_Ref;
+            _stateMachine = stateMachine_Ref;
+            _audioManager = stateMachine_Ref._audioManager;
+            audioKing = _audioManager.AudioKing;
+
+            UnloadAssets();
+            LoadAssets();
 
             if (debugLog) Debug.Log("SliceState constructed!");
 
@@ -31,8 +37,19 @@ namespace Assets.Code.States
         public void LoadAssets()
         {
             if (debugLog) Debug.Log("Loading Assets for SliceState...");
+            audioKing._foley.tuva_CaveSteps = Resources.LoadAll<AudioClip>("Audio/Actor/Tuva/FootSteps/Cave");
+            audioKing._foley.tuva_CaveSteps = Resources.LoadAll<AudioClip>("Audio/Actor/Tuva/FootSteps/Puddles");
+            //audioKing._foley.playerAudioReference = _stateMachine.player.GetComponent<AudioSource>();
+             //audioKing._foley.nPCAudioReference =
 
             if (debugLog) Debug.Log("SliceState Loaded");
+        }
+        public void UnloadAssets()
+        {
+            if (debugLog) Debug.Log("Unloading not needed Assets");
+            audioKing._mus.allInOne = null;
+            if (debugLog) Debug.Log("Assets unloaded.");
+
         }
 
 
