@@ -63,11 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\MainMenu\Scripts\CreditsContent.cs" />
-    <Compile Include="Assets\MainMenu\Scripts\MenuScript.cs" />
-    <Compile Include="Assets\MainMenu\Scripts\PCE_buttonScript.cs" />
-    <Compile Include="Assets\MainMenu\Scripts\TuvaButtonScript.cs" />
-    <Compile Include="Assets\MainMenu\Scripts\TuvaMenuScript.cs" />
     <Compile Include="Assets\Scripts\AIAnimationScript.cs" />
     <Compile Include="Assets\Scripts\AI_Movement.cs" />
     <Compile Include="Assets\Scripts\AudioScripts\A_AudioTrigger.cs" />
@@ -86,10 +81,22 @@
     <Compile Include="Assets\Scripts\Interaction Scripts\TriggerDialog.cs" />
     <Compile Include="Assets\Scripts\Interaction Scripts\TuvaInterations.cs" />
     <Compile Include="Assets\Scripts\JumpSpot.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\CreditsContent.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\MenuScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\PCE_buttonScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\TuvaButtonScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\TuvaMenuScript.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\Movement_player.cs" />
     <Compile Include="Assets\Scripts\OutsideSlice\ChoiceTree.cs" />
     <Compile Include="Assets\Scripts\OutsideSlice\ClickOption.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\Interfaces\IStateBase.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\StateMachine.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\States\AntiSliceState.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\States\CutSceneOneState.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\States\CutSceneTwoState.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\States\MainMenuState.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\States\SliceState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Text\Boy1_choice_1.txt" />
