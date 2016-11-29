@@ -24,21 +24,21 @@ public class A_AudioTrigger : MonoBehaviour {
                 if (!at_Ref.ExitingCave)
                 {
                   
-                    am_Ref.Background_One.Play();
+                    am_Ref._ATM.nextTrack.Play();
                     at_Ref.ExitingCave = true;
                 }
                 else
                 {
                   
                     at_Ref.ExitingCave = false;
-                    am_Ref.Background_One.Stop();
+                    am_Ref._ATM.currentTrack.Stop();
 
                 }
             }
             else
             {
                 
-                am_Ref.Background_Two.Stop();
+                am_Ref._ATM.currentTrack.Stop();
 
                 at_Ref.LeftCave = true;
             }
