@@ -3,9 +3,7 @@ using System.Collections;
 
 public class MenuScript : MonoBehaviour {
 
-    GameObject play_button;
-    GameObject credits_button;
-    GameObject exit_button;
+    GameObject titleButtons;
     GameObject return_button;
 
     public LayerMask button_mask;
@@ -21,9 +19,7 @@ public class MenuScript : MonoBehaviour {
         menu_UI = canvas.transform.GetChild(0).gameObject;
         credits_UI = canvas.transform.GetChild(1).gameObject;
 
-        play_button = GameObject.Find("Play");
-        credits_button = GameObject.Find("Credits");
-        exit_button = GameObject.Find("Exit");
+        titleButtons = GameObject.Find("titlebuttons");
         return_button = GameObject.Find("Return");
 
         ChangeToCreditPanel("Menu");
@@ -56,10 +52,7 @@ public class MenuScript : MonoBehaviour {
     {
         if (value == "Menu")
         {
-            play_button.gameObject.SetActive(true);
-            credits_button.gameObject.SetActive(true);
-            exit_button.gameObject.SetActive(true);
-            return_button.gameObject.SetActive(false);
+            titleButtons.gameObject.SetActive(true);
             menu_UI.SetActive(true);
             credits_UI.SetActive(false);
         }
@@ -67,9 +60,7 @@ public class MenuScript : MonoBehaviour {
         if (value == "Credits")
         {
             tms.StopWalkingTuva();
-            play_button.gameObject.SetActive(false);
-            credits_button.gameObject.SetActive(false);
-            exit_button.gameObject.SetActive(false);
+            titleButtons.gameObject.SetActive(false);
             return_button.gameObject.SetActive(true);
             menu_UI.SetActive(false);
             credits_UI.SetActive(true);
