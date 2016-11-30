@@ -4,6 +4,7 @@
 	{
 		void StateUpdate();
         void LoadAssets();
+        void UnloadAssets();
         void CheckDebugLogBool(StateMachine o);
 	}
 }
