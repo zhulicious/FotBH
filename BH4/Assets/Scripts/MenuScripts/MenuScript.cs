@@ -53,6 +53,7 @@ public class MenuScript : MonoBehaviour {
         if (value == "Menu")
         {
             titleButtons.gameObject.SetActive(true);
+            return_button.gameObject.SetActive(false);
             menu_UI.SetActive(true);
             credits_UI.SetActive(false);
         }
