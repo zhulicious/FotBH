@@ -23,6 +23,7 @@ namespace Assets.Code.States
             _stateMachine = stateMachine_Ref;
             _audioManager = stateMachine_Ref._audioManager;
             audioKing = _audioManager.AudioKing;
+            _stateMachine.tuva = GameObject.Find("Tuva");
 
             UnloadAssets();
             LoadAssets();
