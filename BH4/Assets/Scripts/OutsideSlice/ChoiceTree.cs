@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ChoiceTree : MonoBehaviour {
 	/*
@@ -18,13 +19,15 @@ public class ChoiceTree : MonoBehaviour {
 	Boy4_NoCompass_WithBoy(2) -TuvaFairy# -Sjora
 	Boy4_Compass_WithBoy(2) -TuvaFairy# -Sjora
 	Boy4_Compass_NoBoy(1) -Sjora
+	TrickTheNeck(2) -TuvaFail#, - TuvaWin#
 
 	Sjora(3) -FoundTheNeck -TrickTheNeck - DeathSjora#
 
 	----END SCENES----
 	TuvaFairy
 	FoundTheNeck
-	TrickTheNeck
+	TuvaFail
+	TuvaWin
 	
 	DeathKallra
 	DeathGhost
@@ -35,9 +38,9 @@ public class ChoiceTree : MonoBehaviour {
 
 	 */
 
-	public enum scene{TheNeck, Kallra_Stage1, Kallra_Stage2, ForestProtector, Guldlock, Boy1, Boy2, Boy3, Ghost, Slice, Skogsra, Sjora,
+	public enum scene{TheNeck, Kallra_Stage1, Kallra_Stage2, ForestProtector, Guldlock, Boy1, Boy2_WithBoy, Boy2_NoBoy, Boy3, Ghost, Slice, Skogsra, Sjora,
 	TuvaFairy, FoundTheNeck, TrickTheNeck, DeathKallra, DeathGhost, DeathTree, DeathLantern, DeathSjora, DeathSkogsra, Boy4_NoCompass_WithBoy,
-	Boy4_Compass_WithBoy, Boy4_Compass_NoBoy}
+	Boy4_Compass_WithBoy, Boy4_Compass_NoBoy, TuvaFail, TuvaWin}
 
 	public scene currentScene;
 	public GameObject sceneImage;
@@ -55,14 +58,15 @@ public class ChoiceTree : MonoBehaviour {
 
 
 	void Start () {
+		//GetDOntDestobject
 		currentScene = scene.TheNeck;
 		cA = 3;
 		ChangeVisualForScene();
 
 	}
-	public void ChangeScene(int choice){//Clicked button returns Int 1,2,3 //NO Slice
+	public void ChangeScene(int choice){
 		switch(currentScene){
-		case scene.TheNeck://you are at neck and press choice
+		case scene.TheNeck:
 			if(choice == 1){currentScene = scene.Kallra_Stage1; cA = 2;}
 			else if(choice == 2){currentScene = scene.ForestProtector; cA = 1;}
 			else if(choice == 3){currentScene = scene.Guldlock; cA = 2;}
@@ -75,37 +79,41 @@ public class ChoiceTree : MonoBehaviour {
 
 		case scene.Kallra_Stage2:
 			if(choice == 1){currentScene = scene.DeathKallra; cA = 0;}
-			else if(choice == 2){currentScene = scene.Boy1; cA = 3;}//boy point
-			else if(choice == 3){currentScene = scene.Boy2; cA = 2;}//boy point
+			else if(choice == 2){currentScene = scene.Boy1; cA = 3; boyPoints++;}
+			else if(choice == 3){currentScene = scene.Boy2_NoBoy; cA = 2; boyPoints++;}
 			break;
 
 		case scene.ForestProtector:
-			currentScene = scene.Boy1; cA = 3;//boy point
+			currentScene = scene.Boy1; cA = 1; boyPoints++;
 			break;
 
 		case scene.Guldlock:
-			if(choice == 1){currentScene = scene.Boy1; cA = 3;}//boypoint
-			else if(choice == 2){}//VErticalSLice LOadScene
+			if(choice == 1){currentScene = scene.Boy1; cA = 3; boyPoints++;}
+			else if(choice == 2){StartCoroutine(LoadVertical(0.0f));}
 			break;
 
 		case scene.Boy1:
-			if(choice == 1){currentScene = scene.Boy2; cA = 2;}//boypoint
+			if(choice == 1){currentScene = scene.Boy2_WithBoy; cA = 2; boyPoints++; }
 			else if(choice == 2){currentScene = scene.Ghost; cA = 2;}
-			else if(choice == 3){}//VErticalSLice LOadScene
+			else if(choice == 3){StartCoroutine(LoadVertical(0.0f));}
 			break;
 
-		case scene.Boy2:
+		case scene.Boy2_WithBoy:
 			if(choice == 1){currentScene = scene.Boy3; cA = 2;}
-			else if(choice == 2){currentScene = scene.Skogsra; cA = 3;}//check boypoints
+			else if(choice == 2){currentScene = scene.Skogsra; cA = 3;}
+			break;
+		case scene.Boy2_NoBoy:
+			if(choice == 1){currentScene = scene.Boy3; cA = 2;}
+			else if(choice == 2){currentScene = scene.Skogsra; cA = 3;}
 			break;
 
 		case scene.Boy3:
 			if(choice == 1){currentScene = scene.Boy4_Compass_WithBoy; cA = 2;}
-			else if(choice == 2){currentScene = scene.Skogsra; cA = 3;}//checkBoyoints
+			else if(choice == 2){currentScene = scene.Skogsra; cA = 3;}
 			break;
 
 		case scene.Ghost:
-			if(choice == 1){currentScene = scene.Skogsra; cA = 3;}//checkBoyoints
+			if(choice == 1){currentScene = scene.Skogsra; cA = 3;}
 			else if(choice == 2){currentScene = scene.DeathGhost; cA = 0;}
 			break;
 
@@ -125,12 +133,11 @@ public class ChoiceTree : MonoBehaviour {
 
 		case scene.Sjora:
 			if(choice == 1){currentScene = scene.FoundTheNeck; cA = 0;}
-			else if(choice == 2){currentScene = scene.TrickTheNeck; cA = 0;}
+			else if(choice == 2){currentScene = scene.TrickTheNeck; cA = 2;}
 			else if(choice == 3){currentScene = scene.DeathSjora; cA = 0;}
 			break;
 
 		case scene.TuvaFairy:
-			//LoadMainMenu 15s
 			break;
 
 		case scene.FoundTheNeck:
@@ -138,7 +145,8 @@ public class ChoiceTree : MonoBehaviour {
 			break;
 
 		case scene.TrickTheNeck:
-
+			if(choice == 1){currentScene = scene.TuvaWin; cA = 0;}
+			else if(choice == 2){currentScene = scene.TuvaFail; cA = 0;}
 			break;
 
 		case scene.DeathKallra:
@@ -179,7 +187,14 @@ public class ChoiceTree : MonoBehaviour {
 			currentScene = scene.Sjora; cA = 3;
 			break;
 
+		case scene.TuvaFail:
+
+			break;
+		case scene.TuvaWin:
+
+			break;
 		}
+
 		ChangeVisualForScene();
 	}
 
@@ -221,5 +236,13 @@ public class ChoiceTree : MonoBehaviour {
 		else if(cA == 0){
 			option_1.SetActive(false); option_2.SetActive(false); option_3.SetActive(false);
 		}
+	}
+	IEnumerator LoadMainMenu(float _time){
+		yield return new WaitForSeconds(_time);
+		SceneManager.LoadScene("MainMenu");
+	}
+	IEnumerator LoadVertical(float _time){
+		yield return new WaitForSeconds(_time);
+		SceneManager.LoadScene("troll_vs_1");
 	}
 }
