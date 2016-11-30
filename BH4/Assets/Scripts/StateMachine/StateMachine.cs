@@ -7,6 +7,8 @@ public class StateMachine : MonoBehaviour {
 
     private IStateBase activeState;
     public AudioManager _audioManager;
+    public GameObject tuva;
+    
 
 
     public bool debugLog; //If this is true Debug.Logs will be shown in the console.
@@ -15,6 +17,7 @@ public class StateMachine : MonoBehaviour {
     void Start()
     {
         activeState = new MainMenuState(this);
+
     }
     void Update()
     {

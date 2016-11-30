@@ -34,6 +34,8 @@ namespace Assets.Code.States
 
 			if (debugLog) Debug.Log("AntiSliceState Loaded");
 		}
+        public void UnloadAssets()
+        { }
 
 		public void CheckDebugLogBool(StateMachine o)
 		{
