@@ -12,7 +12,7 @@ public class SafeZone : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.name == "Player")
+		if (col.name == "Tuva")
 		{
 			mamaRef.PlayerStatus(true);
 		}
@@ -20,7 +20,7 @@ public class SafeZone : MonoBehaviour {
 	}
 	void OnTriggerExit2D(Collider2D col)
 	{
-		if (col.name == "Player") 
+		if (col.name == "Tuva") 
 		{
 			mamaRef.PlayerStatus(false);
 		}
