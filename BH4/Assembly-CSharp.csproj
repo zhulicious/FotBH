@@ -46,6 +46,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Graphics\Characters\Treeman\SpawnSwitch.cs" />
+     <Compile Include="Assets\Graphics\Characters\Treeman\StartChase.cs" />
      <Compile Include="Assets\Scripts\AIAnimationScript.cs" />
      <Compile Include="Assets\Scripts\AI_Movement.cs" />
      <Compile Include="Assets\Scripts\AudioScripts\A_AudioTrigger.cs" />
@@ -133,11 +135,15 @@
      <None Include="Assets\Resources\Text\Kallra_Stage2_choice_1.txt" />
      <None Include="Assets\Resources\Text\Guldlock_choice_1.txt" />
      <None Include="Assets\Resources\Text\Boy3_choice_2.txt" />
+     <None Include="Assets\Resources\Text\TrickTheNeck_choice_1.txt" />
      <None Include="Assets\Resources\Text\Kallra_Stage1_choice_2.txt" />
+     <None Include="Assets\Resources\Text\TrickTheNeck_main.txt" />
      <None Include="Assets\Resources\Text\Boy4_Compass_NoBoy_main.txt" />
      <None Include="Assets\Resources\Text\Boy4_NoCompass_WithBoy_choice_1.txt" />
+     <None Include="Assets\Resources\Text\TrickTheNeck_header.txt" />
      <None Include="Assets\Resources\Text\Boy2_NoBoy_main.txt" />
      <None Include="Assets\Resources\Text\Boy4_Compass_WithBoy_choice_1.txt" />
+     <None Include="Assets\Resources\Text\TrickTheNeck_choice_2.txt" />
      <None Include="Assets\Resources\Text\Sjora_choice_2.txt" />
      <None Include="Assets\Resources\Text\Ghost_choice_1.txt" />
      <None Include="Assets\Resources\Text\Skogsra_choice_1.txt" />
