@@ -6,7 +6,6 @@ public class TuvaInterations : MonoBehaviour {
 	
 	public GameObject dontDestroy;
 	public GameObject eButton;
-	public GameObject chatSystem;
 	public GameObject dialog;
 	public enum doing{noInteraction, canInteract, alreadyInteracting};
 	public doing tuvaDoing = doing.noInteraction;
