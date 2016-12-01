@@ -111,6 +111,7 @@
     <Compile Include="Assets\Scripts\MoviePlayer.cs" />
     <Compile Include="Assets\Scripts\OutsideSlice\ChoiceTree.cs" />
     <Compile Include="Assets\Scripts\OutsideSlice\ClickOption.cs" />
+    <Compile Include="Assets\Scripts\SaveMe.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Interfaces\IStateBase.cs" />
     <Compile Include="Assets\Scripts\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\Scripts\StateMachine\States\AntiSliceState.cs" />
