@@ -11,22 +11,22 @@ public class Dialogs : MonoBehaviour {
 	public GameObject tuva;
 
 	void Start () {
-		dialogs.Add(1, "Stop");
-		dialogs.Add(2, "Hello\n There");
-		dialogs.Add(3, "No! \n Wait!");
+		dialogs.Add(1, "Hello Child");
+		dialogs.Add(2, "I can\nprotect you");
+		dialogs.Add(3, "Who are\n you?");
 
 		//Trolls i Cave Dialogs
-		dialogs.Add(4, "Troll 1: I’d say we cut of her head, then give the hair to the children to play with.");
-		dialogs.Add(5, "Troll 2: No, you dumbtroll! That way she dies. She’d smell.");
-		dialogs.Add(6, "Troll 1: Yuck, smelly human...");
-		dialogs.Add(7, "Troll 2: We just cut the hair, then let more grow, then cut it again.");
-		dialogs.Add(8, "Troll 1: We can make nice bracelets out of it.");
-		dialogs.Add(9, "Troll 2: You and your bracelets… Hey, human, we’ll be back later. Don’t try anything.");
+		dialogs.Add(4, "<i>Troll 1: I’d say we cut of her head, then give the hair to the children to play with.</i>");
+		dialogs.Add(5, "<i>Troll 2: No, you dumbtroll! That way she dies. She’d smell.</i>");
+		dialogs.Add(6, "<i>Troll 1: Yuck, smelly human...</i>");
+		dialogs.Add(7, "<i>Troll 2: We just cut the hair, then let more grow, then cut it again.</i>");
+		dialogs.Add(8, "<i>Troll 1: We can make nice bracelets out of it.</i>");
+		dialogs.Add(9, "<i>Troll 2: You and your bracelets… Hey, human, we’ll be back later. Don’t try anything.</i>");
 
 		//Tuva Talks
-		dialogs.Add(10, "Hello!");
-		dialogs.Add(11, "Im Tuva");
-		dialogs.Add(12, "Fuck You");
+		dialogs.Add(10, "All clear");
+		dialogs.Add(11, "Quiet\nnow");
+		dialogs.Add(12, "He is close");
 
 
 	}

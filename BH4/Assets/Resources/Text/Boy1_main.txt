@@ -1,1 +1,3 @@
-Tuva suddenly encounters a young boy who has humanlike features. He barely introduces himself, and asks Tuva to play a game with him. 
+Tuva suddenly encounters a young boy who has humanlike features. He barely introduces himself, says he know where she can get light and asks Tuva to play a game with him.
+
+If Tuva accepts his offer she will play with him. After the game she can either follow him or continue on her own. If she declines she will walk away in a different direction.

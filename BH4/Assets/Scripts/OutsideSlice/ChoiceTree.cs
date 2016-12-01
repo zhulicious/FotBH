@@ -88,7 +88,7 @@ public class ChoiceTree : MonoBehaviour {
 			break;
 
 		case scene.ForestProtector:
-			currentScene = scene.Boy1; cA = 1; boyPoints++;
+			currentScene = scene.Boy1; cA = 3; boyPoints++;
 			break;
 
 		case scene.Guldlock:
@@ -255,7 +255,9 @@ public class ChoiceTree : MonoBehaviour {
 	void EnterEndScene(){
 		endSceneActive = true;
 		allButImage.SetActive(false);
-		StartCoroutine(LoadMainMenu(10.0f));
+		StartCoroutine(LoadMainMenu(3.0f));
+		GameObject.FindGameObjectWithTag("SaveMe").GetComponent<SaveMe>().SetOutSideSliceScene("TheNeck");
+
 	}
 
 	void EnterScene(){
@@ -264,12 +266,12 @@ public class ChoiceTree : MonoBehaviour {
 			EnterEndScene();
 			currentScene = scene.DeathTree;cA = 0;
 			ChangeVisualForScene();
-			GameObject.FindGameObjectWithTag("SaveMe").GetComponent<SaveMe>().SetOutSideSliceScene("TheNeck");
+			//GameObject.FindGameObjectWithTag("SaveMe").GetComponent<SaveMe>().SetOutSideSliceScene("TheNeck");
 		}else if(_s == "DeathLantern"){
 			EnterEndScene();
 			currentScene = scene.DeathLantern;cA = 0;
 			ChangeVisualForScene();
-			GameObject.FindGameObjectWithTag("SaveMe").GetComponent<SaveMe>().SetOutSideSliceScene("TheNeck");
+			//GameObject.FindGameObjectWithTag("SaveMe").GetComponent<SaveMe>().SetOutSideSliceScene("TheNeck");
 
 		}else if(_s == "Skogsra"){
 			currentScene = scene.Skogsra;cA = 3;
