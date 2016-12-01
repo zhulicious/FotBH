@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Skogen_version_one.unity
+- path: Assets/Scenes/OutsideSlice.unity
   isLoaded: 1
   isActive: 1
