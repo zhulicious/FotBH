@@ -88,7 +88,7 @@ public class ChoiceTree : MonoBehaviour {
 			break;
 
 		case scene.ForestProtector:
-			currentScene = scene.Boy1; cA = 1; boyPoints++;
+			currentScene = scene.Boy1; cA = 3; boyPoints++;
 			break;
 
 		case scene.Guldlock:
@@ -255,7 +255,7 @@ public class ChoiceTree : MonoBehaviour {
 	void EnterEndScene(){
 		endSceneActive = true;
 		allButImage.SetActive(false);
-		StartCoroutine(LoadMainMenu(10.0f));
+		StartCoroutine(LoadMainMenu(3.0f));
 	}
 
 	void EnterScene(){
