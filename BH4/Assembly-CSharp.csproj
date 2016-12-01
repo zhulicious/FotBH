@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_2;UNITY_5_4;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;CROSS_PLATFORM_INPUT</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VIDEO;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;CROSS_PLATFORM_INPUT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.XML" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
@@ -45,11 +46,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\MainMenu\Scripts\CreditsContent.cs" />
-     <Compile Include="Assets\MainMenu\Scripts\MenuScript.cs" />
-     <Compile Include="Assets\MainMenu\Scripts\PCE_buttonScript.cs" />
-     <Compile Include="Assets\MainMenu\Scripts\TuvaButtonScript.cs" />
-     <Compile Include="Assets\MainMenu\Scripts\TuvaMenuScript.cs" />
      <Compile Include="Assets\Scripts\AIAnimationScript.cs" />
      <Compile Include="Assets\Scripts\AI_Movement.cs" />
      <Compile Include="Assets\Scripts\AudioScripts\A_AudioTrigger.cs" />
@@ -68,24 +64,103 @@
      <Compile Include="Assets\Scripts\Interaction Scripts\TriggerDialog.cs" />
      <Compile Include="Assets\Scripts\Interaction Scripts\TuvaInterations.cs" />
      <Compile Include="Assets\Scripts\JumpSpot.cs" />
+     <Compile Include="Assets\Scripts\MenuScripts\CreditsContent.cs" />
+     <Compile Include="Assets\Scripts\MenuScripts\MenuScript.cs" />
+     <Compile Include="Assets\Scripts\MenuScripts\PCE_buttonScript.cs" />
+     <Compile Include="Assets\Scripts\MenuScripts\TuvaButtonScript.cs" />
+     <Compile Include="Assets\Scripts\MenuScripts\TuvaMenuScript.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
      <Compile Include="Assets\Scripts\Movement_player.cs" />
+     <Compile Include="Assets\Scripts\MoviePlayer.cs" />
      <Compile Include="Assets\Scripts\OutsideSlice\ChoiceTree.cs" />
      <Compile Include="Assets\Scripts\OutsideSlice\ClickOption.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\Interfaces\IStateBase.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\StateMachine.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\States\AntiSliceState.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\States\CutSceneOneState.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\States\CutSceneTwoState.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\States\MainMenuState.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\States\SliceState.cs" />
      <None Include="Assets\Resources\Text\Kallra_Stage1_header.txt" />
+     <None Include="Assets\Resources\Text\Ghost_choice_2.txt" />
+     <None Include="Assets\Resources\Text\ForestProtector_main.txt" />
+     <None Include="Assets\Resources\Text\Sjora_choice_3.txt" />
+     <None Include="Assets\Resources\Text\Boy3_main.txt" />
+     <None Include="Assets\Resources\Text\Boy2_NoBoy_choice_2.txt" />
+     <None Include="Assets\Resources\Text\Sjora_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Boy4_Compass_NoBoy_header.txt" />
+     <None Include="Assets\Resources\Text\Kallra_Stage2_header.txt" />
+     <None Include="Assets\Resources\Text\Skogsra_choice_2.txt" />
      <None Include="Assets\Resources\Text\TheNeck_main.txt" />
+     <None Include="Assets\Resources\Text\ForestProtector_header.txt" />
      <None Include="Assets\Resources\Text\TheNeck_header.txt" />
+     <None Include="Assets\Resources\Text\Guldlock_main.txt" />
+     <None Include="Assets\Resources\Text\Boy4_Compass_WithBoy_header.txt" />
+     <None Include="Assets\Resources\Text\Boy2_WithBoy_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Skogsra_header.txt" />
+     <None Include="Assets\Resources\Text\ForestProtector_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Sjora_header.txt" />
+     <None Include="Assets\Resources\Text\Boy4_NoCompass_WithBoy_main.txt" />
+     <None Include="Assets\Resources\Text\Boy4_Compass_WithBoy_choice_2.txt" />
+     <None Include="Assets\Resources\Text\Guldlock_choice_2.txt" />
+     <None Include="Assets\Resources\Text\Skogsra_main.txt" />
+     <None Include="Assets\Resources\Text\Boy2_NoBoy_header.txt" />
+     <None Include="Assets\Resources\Text\Sjora_main.txt" />
+     <None Include="Assets\Resources\Text\Boy2_WithBoy_choice_2.txt" />
+     <None Include="Assets\Resources\Text\Boy3_header.txt" />
+     <None Include="Assets\Resources\Text\Skogsra_choice_3.txt" />
+     <None Include="Assets\Resources\Text\Kallra_Stage2_choice_2.txt" />
      <None Include="Assets\Resources\Text\TheNeck_choice_2.txt" />
+     <None Include="Assets\Resources\Text\Boy4_NoCompass_WithBoy_header.txt" />
+     <None Include="Assets\Resources\Text\Ghost_main.txt" />
+     <None Include="Assets\Resources\Text\Kallra_Stage2_choice_3.txt" />
+     <None Include="Assets\Resources\Text\Boy1_main.txt" />
      <None Include="Assets\Resources\Text\TheNeck_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Boy4_Compass_WithBoy_main.txt" />
+     <None Include="Assets\Resources\Text\Boy1_choice_2.txt" />
+     <None Include="Assets\Resources\Text\Boy2_WithBoy_main.txt" />
+     <None Include="Assets\Resources\Text\Boy3_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Ghost_header.txt" />
+     <None Include="Assets\Resources\Text\Boy1_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Boy4_Compass_NoBoy_choice_1.txt" />
      <None Include="Assets\Resources\Text\Kallra_Stage1_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Kallra_Stage2_main.txt" />
+     <None Include="Assets\Resources\Text\Boy2_NoBoy_choice_1.txt" />
      <None Include="Assets\Resources\Text\TheNeck_choice_3.txt" />
      <None Include="Assets\Resources\Text\Kallra_Stage1_main.txt" />
+     <None Include="Assets\Resources\Text\Boy1_header.txt" />
+     <None Include="Assets\Resources\Text\Kallra_Stage2_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Guldlock_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Boy3_choice_2.txt" />
      <None Include="Assets\Resources\Text\Kallra_Stage1_choice_2.txt" />
+     <None Include="Assets\Resources\Text\Boy4_Compass_NoBoy_main.txt" />
+     <None Include="Assets\Resources\Text\Boy4_NoCompass_WithBoy_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Boy2_NoBoy_main.txt" />
+     <None Include="Assets\Resources\Text\Boy4_Compass_WithBoy_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Sjora_choice_2.txt" />
+     <None Include="Assets\Resources\Text\Ghost_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Skogsra_choice_1.txt" />
+     <None Include="Assets\Resources\Text\Boy1_choice_3.txt" />
+     <None Include="Assets\Resources\Text\Guldlock_header.txt" />
+     <None Include="Assets\Resources\Text\Boy2_WithBoy_header.txt" />
+     <None Include="Assets\Resources\Text\Boy4_NoCompass_WithBoy_choice_2.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.PlaymodeTestsRunner">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HoloLens">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.VR">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
