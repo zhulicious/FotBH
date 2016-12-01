@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -70,9 +67,6 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
     </Reference>
@@ -82,7 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Graphics\Characters\Treeman\SpawnSwitch.cs" />
-    <Compile Include="Assets\Graphics\Characters\Treeman\StartChase.cs" />
+    <Compile Include="Assets\Graphics\Characters\Treeman\StoppChase.cs" />
     <Compile Include="Assets\Scripts\AIAnimationScript.cs" />
     <Compile Include="Assets\Scripts\AI_Movement.cs" />
     <Compile Include="Assets\Scripts\AudioScripts\A_AudioTrigger.cs" />
@@ -184,6 +178,10 @@
     <None Include="Assets\Resources\Text\TheNeck_choice_3.txt" />
     <None Include="Assets\Resources\Text\TheNeck_header.txt" />
     <None Include="Assets\Resources\Text\TheNeck_main.txt" />
+    <None Include="Assets\Resources\Text\TrickTheNeck_choice_1.txt" />
+    <None Include="Assets\Resources\Text\TrickTheNeck_choice_2.txt" />
+    <None Include="Assets\Resources\Text\TrickTheNeck_header.txt" />
+    <None Include="Assets\Resources\Text\TrickTheNeck_main.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
