@@ -104,12 +104,13 @@ public class TuvaInterations : MonoBehaviour {
 		}else if(currentTag == "Use_Item"){
 			if(hasItem){
 				//remove Object / add object
-				chatSystem.GetComponent<ChatSystem>().CharacterTalk(gameObject, "Lets start\ndigging", null, null);
+				dialog.GetComponent<Dialogs>().ChatDialog(currentInteractionObject, currentInteractionObject.GetComponent<TriggerDialog>().ReturnHostBubble());
+				//chatSystem.GetComponent<ChatSystem>().CharacterTalk(gameObject, "Lets start\ndigging", null, null);
 				currentInteractionObject.SetActive(false);
 				currentInteractionObject = null;
 
 			}else{
-				chatSystem.GetComponent<ChatSystem>().CharacterTalk(gameObject, "Need something\nto dig", null, null);
+				//chatSystem.GetComponent<ChatSystem>().CharacterTalk(gameObject, "Need something\nto dig", null, null);
 			}
 			CanInteractAgain();
 		}
