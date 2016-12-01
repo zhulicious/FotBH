@@ -13,7 +13,7 @@ public class ActivateMonster : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D col)
 	{
-		if (col.name == "Player") {
+		if (col.name == "Tuva") {
 			mama.GoMonster ();
 			Debug.Log ("Activate Montster");
 			Destroy (gameObject);
