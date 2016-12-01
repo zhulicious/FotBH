@@ -42,6 +42,7 @@ public class ChoiceTree : MonoBehaviour {
 	TuvaFairy, FoundTheNeck, TrickTheNeck, DeathKallra, DeathGhost, DeathTree, DeathLantern, DeathSjora, DeathSkogsra, Boy4_NoCompass_WithBoy,
 	Boy4_Compass_WithBoy, Boy4_Compass_NoBoy, TuvaFail, TuvaWin}
 
+	public GameObject allButImage;
 	public scene currentScene;
 	public GameObject sceneImage;
 	public GameObject option_1;
@@ -52,6 +53,7 @@ public class ChoiceTree : MonoBehaviour {
 	public Text choice_1;
 	public Text choice_2;
 	public Text choice_3;
+	bool endSceneActive;
 
 	int cA;
 	int boyPoints;
@@ -78,7 +80,7 @@ public class ChoiceTree : MonoBehaviour {
 			break;
 
 		case scene.Kallra_Stage2:
-			if(choice == 1){currentScene = scene.DeathKallra; cA = 0;}
+			if(choice == 1){currentScene = scene.DeathKallra; cA = 0; EnterEndScene();}
 			else if(choice == 2){currentScene = scene.Boy1; cA = 3; boyPoints++;}
 			else if(choice == 3){currentScene = scene.Boy2_NoBoy; cA = 2; boyPoints++;}
 			break;
@@ -114,7 +116,7 @@ public class ChoiceTree : MonoBehaviour {
 
 		case scene.Ghost:
 			if(choice == 1){currentScene = scene.Skogsra; cA = 3;}
-			else if(choice == 2){currentScene = scene.DeathGhost; cA = 0;}
+			else if(choice == 2){currentScene = scene.DeathGhost; cA = 0; EnterEndScene();}
 			break;
 
 		case scene.Skogsra:
@@ -128,13 +130,13 @@ public class ChoiceTree : MonoBehaviour {
 				}
 			}
 			else if(choice == 2){currentScene = scene.Sjora; cA = 3;}
-			else if(choice == 3){currentScene = scene.DeathSkogsra; cA = 0;}
+			else if(choice == 3){currentScene = scene.DeathSkogsra; cA = 0;EnterEndScene();}
 			break;
 
 		case scene.Sjora:
-			if(choice == 1){currentScene = scene.FoundTheNeck; cA = 0;}
+			if(choice == 1){currentScene = scene.FoundTheNeck; cA = 0;EnterEndScene();}
 			else if(choice == 2){currentScene = scene.TrickTheNeck; cA = 2;}
-			else if(choice == 3){currentScene = scene.DeathSjora; cA = 0;}
+			else if(choice == 3){currentScene = scene.DeathSjora; cA = 0;EnterEndScene();}
 			break;
 
 		case scene.TuvaFairy:
@@ -145,8 +147,8 @@ public class ChoiceTree : MonoBehaviour {
 			break;
 
 		case scene.TrickTheNeck:
-			if(choice == 1){currentScene = scene.TuvaWin; cA = 0;}
-			else if(choice == 2){currentScene = scene.TuvaFail; cA = 0;}
+			if(choice == 1){currentScene = scene.TuvaWin; cA = 0;EnterEndScene();}
+			else if(choice == 2){currentScene = scene.TuvaFail; cA = 0;EnterEndScene();}
 			break;
 
 		case scene.DeathKallra:
@@ -174,12 +176,12 @@ public class ChoiceTree : MonoBehaviour {
 			break;
 
 		case scene.Boy4_NoCompass_WithBoy:
-			if(choice == 1){currentScene = scene.TuvaFairy; cA = 0;}
+			if(choice == 1){currentScene = scene.TuvaFairy; cA = 0;EnterEndScene();}
 			else if(choice == 2){currentScene = scene.Sjora; cA = 3;}
 			break;
 
 		case scene.Boy4_Compass_WithBoy:
-			if(choice == 1){currentScene = scene.TuvaFairy; cA = 0;}
+			if(choice == 1){currentScene = scene.TuvaFairy; cA = 0;EnterEndScene();}
 			else if(choice == 2){currentScene = scene.Sjora; cA = 3;}
 			break;
 
@@ -204,12 +206,15 @@ public class ChoiceTree : MonoBehaviour {
 		sceneImage.GetComponent<Image>().sprite = loadedImage;
 
 		//Set Header?!?!?
-		TextAsset loadedHeaderText = (TextAsset)Resources.Load("Text/" + currentScene.ToString() + "_header");
-		header.text = loadedHeaderText.text;
+		if(!endSceneActive){
+			TextAsset loadedHeaderText = (TextAsset)Resources.Load("Text/" + currentScene.ToString() + "_header");
+			header.text = loadedHeaderText.text;
 
-		//Set Main Text
-		TextAsset loadedMainText = (TextAsset)Resources.Load("Text/" + currentScene.ToString() + "_main");
-		mainText.text = loadedMainText.text;
+			//Set Main Text
+			TextAsset loadedMainText = (TextAsset)Resources.Load("Text/" + currentScene.ToString() + "_main");
+			mainText.text = loadedMainText.text;
+		}
+
 
 		//Set option Amount
 		if(cA == 1){
@@ -243,6 +248,29 @@ public class ChoiceTree : MonoBehaviour {
 	}
 	IEnumerator LoadVertical(float _time){
 		yield return new WaitForSeconds(_time);
-		SceneManager.LoadScene("troll_vs_1");
+		SceneManager.LoadScene("Skogen_version_one");
 	}
+	void EnterEndScene(){
+		endSceneActive = true;
+		allButImage.SetActive(false);
+		StartCoroutine(LoadMainMenu(10.0f));
+	}
+	public void SetSceneAfterSlice(){
+		currentScene = scene.Skogsra;
+		cA = 3;
+		ChangeVisualForScene();
+	}
+	public void KilledByLantern(){
+		EnterEndScene();
+		currentScene = scene.DeathLantern;
+		cA = 0;
+		ChangeVisualForScene();
+	}
+	public void KilledByTree(){
+		EnterEndScene();
+		currentScene = scene.DeathTree;
+		cA = 0;
+		ChangeVisualForScene();
+	}
+
 }
