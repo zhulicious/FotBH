@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public enum EnemyMode {Relaxed = 0, Turning = 1, Search = 2, SeeingPlayer = 3, ChasingPlayer = 4}
+public enum EnemyMode {Relaxed = 0, Turning = 1, Search = 2, ChasingPlayer = 3 }
 
 public class EnemyBehaviour : MonoBehaviour { //This script is the AI for the tree monster. The idea is to use a switch with four cases. 
 
 	public Script_Mama_ForestCreature gamePlayRef; // This is the mother script that has all the scripts thats needed to make this part of the game work.
 	public GameObject friendlyOldMan; // This is the NPC that carries a lantern and will extinguish the flame when the mosnter is about to search for the player (case 2).
-    public StartChase chase; //test
+    public StoppChase chase;
     public SpawnSwitch spawnSwitch;
     public float movementS;
-    public GameObject chasePos;
 
 	private EnemyMode currentMode;
 	private bool isPlayerSafe; //Scripts can access this variable with the property variable IsPlayerSafe.
@@ -31,16 +30,20 @@ public class EnemyBehaviour : MonoBehaviour { //This script is the AI for the tr
         myAnimator = GetComponent<Animator>();
         myAnimator.Play("TreemanIdle");
 
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (currentMode == EnemyMode.Search && !IsPlayerSafe) 
-		{
-			nextMode = EnemyMode.SeeingPlayer;
+        Debug.Log(csp);
+        
+        if (currentMode == EnemyMode.Search && !IsPlayerSafe)
+        {
+			nextMode = EnemyMode.ChasingPlayer;
 			Action ();
-		}
+
+        }
         if (spawnSwitch.respawn)
         {
             GetComponent<Transform>().position = spawnSwitch.spawn[csp].transform.position;
@@ -49,10 +52,10 @@ public class EnemyBehaviour : MonoBehaviour { //This script is the AI for the tr
         }
         else if (chase.sChase)
         {
-            nextMode = EnemyMode.ChasingPlayer;
-            Action ();
+            GetComponent<Transform>().position = spawnSwitch.spawn[csp].transform.position;
+            chase.sChase = false;
         }
-       
+
 
     }
 
@@ -63,8 +66,7 @@ public class EnemyBehaviour : MonoBehaviour { //This script is the AI for the tr
         myAnimator.SetBool("Idle", false);
         myAnimator.SetBool("Turning", false);
         myAnimator.SetBool("Searching", false);
-        myAnimator.SetBool("SeeingPlayer", false);
-        //myAnimator.SetBool("Chasing", false);
+        myAnimator.SetBool("Chasing", false);
 
         switch (nextMode)
 		{
@@ -89,14 +91,12 @@ public class EnemyBehaviour : MonoBehaviour { //This script is the AI for the tr
             nextMode = EnemyMode.Relaxed;
             Invoke ("Action", searchTime);
 			break;
-		case EnemyMode.SeeingPlayer: //This case is when the monster sees the player.
-			Debug.Log ("Case 3 - Seeing Player");
-            myAnimator.SetBool("SeeingPlayer", true);
-			break;
         case EnemyMode.ChasingPlayer:
-            Debug.Log("Case 4 - Chasing");
+            Debug.Log("Case 3 - Chasing");
             myAnimator.SetBool("Chasing", true);
-            GetComponent<Transform>().Translate(Vector3.right * movementS * Time.deltaTime);
+                GetComponent<Transform>().Translate(Vector3.right * movementS * Time.deltaTime);
+
+                nextMode = EnemyMode.Relaxed;
             break;
         }
 	}
