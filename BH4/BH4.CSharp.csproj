@@ -70,12 +70,9 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
-=======
->>>>>>> origin/master
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
     </Reference>
@@ -111,8 +108,10 @@
     <Compile Include="Assets\Scripts\MenuScripts\TuvaMenuScript.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\Movement_player.cs" />
+    <Compile Include="Assets\Scripts\MoviePlayer.cs" />
     <Compile Include="Assets\Scripts\OutsideSlice\ChoiceTree.cs" />
     <Compile Include="Assets\Scripts\OutsideSlice\ClickOption.cs" />
+    <Compile Include="Assets\Scripts\SaveMe.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Interfaces\IStateBase.cs" />
     <Compile Include="Assets\Scripts\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\Scripts\StateMachine\States\AntiSliceState.cs" />
@@ -167,6 +166,8 @@
     <None Include="Assets\Resources\Text\Kallra_Stage1_main.txt" />
     <None Include="Assets\Resources\Text\Kallra_Stage2_choice_1.txt" />
     <None Include="Assets\Resources\Text\Kallra_Stage2_choice_2.txt" />
+    <None Include="Assets\Resources\Text\Kallra_Stage2_choice_3.txt" />
+    <None Include="Assets\Resources\Text\Kallra_Stage2_header.txt" />
     <None Include="Assets\Resources\Text\Kallra_Stage2_main.txt" />
     <None Include="Assets\Resources\Text\Sjora_choice_1.txt" />
     <None Include="Assets\Resources\Text\Sjora_choice_2.txt" />
