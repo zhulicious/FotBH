@@ -7,7 +7,7 @@ public class StateMachine : MonoBehaviour {
 
     private IStateBase activeState;
     public AudioManager _audioManager;
-    public GameObject player;
+    public GameObject tuva;
     
 
 
@@ -17,6 +17,7 @@ public class StateMachine : MonoBehaviour {
     void Start()
     {
         activeState = new MainMenuState(this);
+
     }
     void Update()
     {

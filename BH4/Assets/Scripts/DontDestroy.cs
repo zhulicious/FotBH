@@ -13,9 +13,13 @@ public class DontDestroy : MonoBehaviour {
 	GameObject trigger;
 
 	bool triggerUsed;
+	bool fromSlice;
 
 
 	void Awake(){
+
+
+
 		if(GameObject.FindGameObjectsWithTag(gameObject.tag).Length > 1){
 			Destroy(gameObject);
 		}else{
@@ -53,5 +57,14 @@ public class DontDestroy : MonoBehaviour {
 	}
 	void DestroyTrigger(){
 		Destroy(trigger.gameObject);
+	}
+	public bool ReturnFromSliceOrNot(){
+		return fromSlice;
+	}
+	public void SetFromSlice(){
+		fromSlice = true;
+	}
+	public void SetFromMenu(){
+		fromSlice = false;
 	}
 }
