@@ -147,6 +147,7 @@
     <None Include="Assets\Resources\Text\Boy4_NoCompass_WithBoy_choice_2.txt" />
     <None Include="Assets\Resources\Text\Boy4_NoCompass_WithBoy_header.txt" />
     <None Include="Assets\Resources\Text\Boy4_NoCompass_WithBoy_main.txt" />
+    <None Include="Assets\Resources\Text\ChoiceTree.txt" />
     <None Include="Assets\Resources\Text\ForestProtector_choice_1.txt" />
     <None Include="Assets\Resources\Text\ForestProtector_header.txt" />
     <None Include="Assets\Resources\Text\ForestProtector_main.txt" />
