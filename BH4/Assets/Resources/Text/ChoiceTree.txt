@@ -1,0 +1,56 @@
+
+**Choice Tree**
+
+ex. "TheNeck_choice_1", or "Kallra_Stage1_main"
+
+--Placements--
+
+_main
+_header
+_choice_1
+_choice_2
+_choice_3
+
+
+--Scenes-----
+
+TheNeck, Kallra_Stage1, Kallra_Stage2, ForestProtector, Guldlock, Boy1, 
+Boy2_WithBoy, Boy2_NoBoy, Boy3, Ghost, Slice, Skogsra, Sjora,TuvaFairy, 
+FoundTheNeck, TrickTheNeck, DeathKallra, DeathGhost, DeathTree, DeathLantern, 
+DeathSjora, DeathSkogsra, Boy4_NoCompass_WithBoy,Boy4_Compass_WithBoy,
+ Boy4_Compass_NoBoy, TuvaFail, TuvaWin
+
+
+
+**endast för placering av choices**
+--Areas-----------Choices-------
+TheNeck | -Kallra_Stage, -ForestProtector, -Guldlock
+Kallra_Stage1 | -Kallra_Stage2, -Ghost
+Kallra_Stage2 | -DeathKallra, -Boy1, Boy2NoBoy
+ForestProtector | -Boy1;
+Guldlock | -Boy1, -VerticalSlice
+Boy1 | -Boy2_withBoy, -Ghost, -vercticalSlice
+Boy2_WithBoy | -Boy3, Skogsra
+Boy2_NoBoy | Boy3, Skogsra
+Boy3 | Boy4_compass_withBoy, Skogsra
+Ghost | Skogsra, DeathGhost
+Skogsra | (Boy4_Compass_WithBoy, BOy4_Compass_NoBoy), Sjora, DeathSkogsra
+Sjora |FoundTheNEck, TrickTheNEck, DeathSjora
+TrickTheNeck | Tuvawin, TuvaFail
+Boy4_NoCompass_WithBoy | TuvaFairy, Sjora
+Boy4_Compass_WithBoy | TuvaFairy, Sjora
+Boy4_Compass_NoBoy | Sjora
+
+----END Scenes---
+
+DeathKallra
+DeathGhost
+DeathTree
+DeathLantern
+DeathSjora
+DeathSkogsra
+TuvaFairy
+FoundTheNeck
+TuvaFail
+TuvaWin
+

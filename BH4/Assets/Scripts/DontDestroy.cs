@@ -4,12 +4,8 @@ using System.Collections;
 public class DontDestroy : MonoBehaviour {
 
 	public Vector3 tuvaPosition;
-	public Vector3 guldlockPosition;
-	public Vector3 lanternPosition;
 
 	GameObject tuva;
-	GameObject guldlock;
-	GameObject lantern;
 	GameObject trigger;
 
 	bool triggerUsed;
@@ -26,8 +22,6 @@ public class DontDestroy : MonoBehaviour {
 			DontDestroyOnLoad(transform.gameObject);
 			FindGameObjects();
 			tuvaPosition = tuva.transform.position;
-			guldlockPosition = guldlock.transform.position;
-			lanternPosition = lantern.transform.position;
 		}
 	}
 	void Start () {
@@ -35,8 +29,6 @@ public class DontDestroy : MonoBehaviour {
 	}
 	void FindGameObjects(){
 		tuva = GameObject.FindGameObjectWithTag("Tuva");
-		guldlock = GameObject.FindGameObjectWithTag("Guldlock");
-		lantern = GameObject.FindGameObjectWithTag("Lantern");
 		trigger = GameObject.FindGameObjectWithTag("CutScene");
 	}
 	public void SetPositions(){
@@ -45,13 +37,9 @@ public class DontDestroy : MonoBehaviour {
 			DestroyTrigger();
 		}
 		tuva.transform.position = tuvaPosition;
-		guldlock.transform.position = guldlockPosition;
-		lantern.transform.position = lanternPosition;
 	}
 	public void SavePositions(){
 		tuvaPosition = tuva.transform.position;
-		guldlockPosition = guldlock.transform.position;
-		lanternPosition = lantern.transform.position;
 
 		triggerUsed = true;
 	}
