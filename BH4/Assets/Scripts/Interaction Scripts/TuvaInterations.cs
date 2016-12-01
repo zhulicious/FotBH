@@ -115,6 +115,18 @@ public class TuvaInterations : MonoBehaviour {
 		}
 
 	}
+	public void TuvaDiedByTree(){
+		GameObject.FindGameObjectWithTag("SaveMe").GetComponent<SaveMe>().SetOutSideSliceScene("DeathTree");
+		SceneManager.LoadScene("OutsideSlice");
+	}
+	public void TuvaDiedByLantern(){
+		GameObject.FindGameObjectWithTag("SaveMe").GetComponent<SaveMe>().SetOutSideSliceScene("DeathLantern");
+		SceneManager.LoadScene("OutsideSlice");
+	}
+	public void TuvaContinueToSkogsra(){
+		GameObject.FindGameObjectWithTag("SaveMe").GetComponent<SaveMe>().SetOutSideSliceScene("Skogsra");
+		SceneManager.LoadScene("OutsideSlice");
+	}
 	void Update () {
 		if(tuvaDoing == doing.canInteract){
 			ActivateInteractionButton();
@@ -124,6 +136,13 @@ public class TuvaInterations : MonoBehaviour {
 
 		}else{
 			DeactivateInteractionButton();
+		}
+		if(Input.GetKeyDown(KeyCode.Y)){
+			TuvaDiedByTree();
+		}else if(Input.GetKeyDown(KeyCode.U)){
+			TuvaDiedByLantern();
+		}else if(Input.GetKeyDown(KeyCode.I)){
+			TuvaContinueToSkogsra();
 		}
 	}
 

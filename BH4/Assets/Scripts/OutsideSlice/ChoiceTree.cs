@@ -60,10 +60,12 @@ public class ChoiceTree : MonoBehaviour {
 
 
 	void Start () {
+
+		EnterScene();
 		//GetDOntDestobject
-		currentScene = scene.TheNeck;
+		/*currentScene = scene.TheNeck;
 		cA = 3;
-		ChangeVisualForScene();
+		ChangeVisualForScene();*/
 
 	}
 	public void ChangeScene(int choice){
@@ -248,29 +250,34 @@ public class ChoiceTree : MonoBehaviour {
 	}
 	IEnumerator LoadVertical(float _time){
 		yield return new WaitForSeconds(_time);
-		SceneManager.LoadScene("Skogen_version_one");
+		SceneManager.LoadScene("trollskog_vs_1");
 	}
 	void EnterEndScene(){
 		endSceneActive = true;
 		allButImage.SetActive(false);
 		StartCoroutine(LoadMainMenu(10.0f));
 	}
-	public void SetSceneAfterSlice(){
-		currentScene = scene.Skogsra;
-		cA = 3;
-		ChangeVisualForScene();
-	}
-	public void KilledByLantern(){
-		EnterEndScene();
-		currentScene = scene.DeathLantern;
-		cA = 0;
-		ChangeVisualForScene();
-	}
-	public void KilledByTree(){
-		EnterEndScene();
-		currentScene = scene.DeathTree;
-		cA = 0;
-		ChangeVisualForScene();
+
+	void EnterScene(){
+		string _s = GameObject.FindGameObjectWithTag("SaveMe").GetComponent<SaveMe>().ReturnEnterScene();
+		if(_s == "DeathTree"){
+			EnterEndScene();
+			currentScene = scene.DeathTree;cA = 0;
+			ChangeVisualForScene();
+			GameObject.FindGameObjectWithTag("SaveMe").GetComponent<SaveMe>().SetOutSideSliceScene("TheNeck");
+		}else if(_s == "DeathLantern"){
+			EnterEndScene();
+			currentScene = scene.DeathLantern;cA = 0;
+			ChangeVisualForScene();
+			GameObject.FindGameObjectWithTag("SaveMe").GetComponent<SaveMe>().SetOutSideSliceScene("TheNeck");
+
+		}else if(_s == "Skogsra"){
+			currentScene = scene.Skogsra;cA = 3;
+			ChangeVisualForScene();
+		}else if(_s == "TheNeck"){
+			currentScene = scene.TheNeck;cA = 3;
+			ChangeVisualForScene();
+		}
 	}
 
 }
