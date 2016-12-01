@@ -15,7 +15,7 @@ public class PCE_buttonScript : MonoBehaviour {
     {
         if (currentName == "Play")
         {
-            //SceneManager.LoadScene("trollskog_vs_1");
+            SceneManager.LoadScene("OutsideSlice");
             Debug.Log("LoadScene(trollskog)");
         }
         else if (currentName == "Credits")
