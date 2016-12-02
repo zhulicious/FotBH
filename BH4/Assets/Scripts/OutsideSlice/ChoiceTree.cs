@@ -250,7 +250,7 @@ public class ChoiceTree : MonoBehaviour {
 	}
 	IEnumerator LoadVertical(float _time){
 		yield return new WaitForSeconds(_time);
-		SceneManager.LoadScene("trollskog_vs_1");
+		SceneManager.LoadScene("CaveScene");
 	}
 	void EnterEndScene(){
 		endSceneActive = true;
