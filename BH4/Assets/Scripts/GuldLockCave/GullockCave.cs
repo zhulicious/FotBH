@@ -14,6 +14,9 @@ using UnityEngine;
 public class GullockCave : MonoBehaviour {
 
     public GameObject cage;
+	public GameObject talkTuva;
+	public GameObject backWithKeys;
+	public GameObject dialogs;
     GameObject cageopen;
     GameObject cageclosed;
     GameObject cagecolliders;
@@ -74,14 +77,16 @@ public class GullockCave : MonoBehaviour {
     IEnumerator CaveSequence ()
     {
         //Start: Guldlock waits 5sec, walks to a target position
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(30f);
         targetPosition = cagePosition;
         walking = true;
         animations.SetBool("Walk", true);
-        yield return new WaitUntil(() => transform.position == targetPosition);
+		targetPosition = new Vector3(targetPosition.x -3, targetPosition.y, targetPosition.z);
+		yield return new WaitUntil(() => transform.position == targetPosition);
         walking = false;
         animations.SetBool("Walk", false);
-        yield return new WaitForSeconds(3f);
+		dialogs.GetComponent<Dialogs>().EventDialog(talkTuva);
+        yield return new WaitForSeconds(75.0f);
         targetPosition = otherPosition.position;
         sr.flipX = false;
         walking = true;
@@ -94,6 +99,7 @@ public class GullockCave : MonoBehaviour {
         walking = false;
         animations.SetBool("Walk", false);
         LetTuvaOut();
+		dialogs.GetComponent<Dialogs>().EventDialog(backWithKeys);
         yield return new WaitForSeconds(5.0f);
         guldLockAI.enabled = true;
         this.enabled = false;

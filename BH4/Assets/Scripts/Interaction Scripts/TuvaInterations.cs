@@ -17,7 +17,10 @@ public class TuvaInterations : MonoBehaviour {
 
 	void Start () {
 		dontDestroy = GameObject.FindGameObjectWithTag("DontDestroy");
-		dontDestroy.GetComponent<DontDestroy>().SetPositions();
+		if(dontDestroy != null){
+			dontDestroy.GetComponent<DontDestroy>().SetPositions();
+
+		}
 	}
 	void OnTriggerEnter2D(Collider2D col){
 		currentTag = col.gameObject.tag;
@@ -35,6 +38,8 @@ public class TuvaInterations : MonoBehaviour {
 		}else if (currentTag == "Dialog"){
 			dialog.GetComponent<Dialogs>().EventDialog(col.gameObject);
 			col.gameObject.SetActive(false);
+		}else if(currentTag == "ChangeToScene"){
+			SceneManager.LoadScene(col.transform.gameObject.GetComponent<ChangeScene>().ReturnScene());
 		}
 		currentInteractionObject = col.gameObject;
 		if(tuvaDoing == doing.noInteraction || tuvaDoing != doing.alreadyInteracting){
