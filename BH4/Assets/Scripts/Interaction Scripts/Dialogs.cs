@@ -51,6 +51,31 @@ public class Dialogs : MonoBehaviour {
 		dialogs.Add(31, "Guldlock:<i> I have tried escaping before, but they always catch me! Maybe if we work togther, we can actually get out!</i>");
 		dialogs.Add(32, "Guldlock:<i> Common, hurry, before they get back!</i>");
 
+		dialogs.Add(33, "Guldlock:<i>They stopped following us. We're safe now... Can you Believe it? We are free!</i>");
+		dialogs.Add(34, "Tuva:<i> I have a bad feeling though...</i>");
+		dialogs.Add(35, "Guldlock:<i> What do you mean? We made it, we'll be fine!</i>");
+		dialogs.Add(36, "Tuva:<i> W-Who are you old man?</i>");
+		dialogs.Add(37, "Old man:<i> Hello there, young ones.</i>");
+
+
+		dialogs.Add(38, "Guldlock:<i> This is wonderful! I'll finally meet them! I can finnaly find my real famaily! I'll find home! Oh, this is great! I'll-</i>");
+
+		dialogs.Add(39, "Tuva:<i>...</i>");
+		dialogs.Add(40, "Old man:<i> ..You could say i am a guardian of sorts. For you see the Tree Ghast haunts this area,</i>");
+		dialogs.Add(41, "Old man:<i> ever looking for new victims, like you friend. They are horrid creatures, I tell you.</i>");
+		dialogs.Add(42, "Tuva:<i> Why dind't you help her</i>");
+		dialogs.Add(43, "Old man:<i> They are drawn to the light, you see. You better put it out if they are close,</i>");
+		dialogs.Add(44, "Old man:<i> or they'll notice you. Oh, silly old me, I forget, humans can't do that.</i>");
+		dialogs.Add(45, "Old man:<i> Follow me.</i>");
+
+		dialogs.Add(46, "Old man:<i> There you are. Good thing you didn't get caught. Now follow me.</i>");
+		dialogs.Add(47, "Tuva:<i> ....</i>");
+		dialogs.Add(48, "Old man:<i> Are you coming or what?</i>");
+		dialogs.Add(49, "< Press E or follow the old man >");
+		dialogs.Add(50, "< Press E or follow the old man >");
+		dialogs.Add(51, "< Press E or follow the old man >");
+
+
 	}
 	void Start () {
 
