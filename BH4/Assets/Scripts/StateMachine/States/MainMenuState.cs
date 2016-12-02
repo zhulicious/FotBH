@@ -7,6 +7,7 @@ namespace Assets.Code.States
 	{
 		private StateMachine _stateMachine;
         private AudioManager _audioManager;
+        private AllAudioUsedInScene aauis;
         private AudioKing audioKingReference;
         private AudioClip theme;
 
@@ -17,9 +18,9 @@ namespace Assets.Code.States
             CheckDebugLogBool(stateMachine_Ref);
             if(debugLog) Debug.Log("Constructing BeginState");
             _audioManager = _stateMachine._audioManager;
-            audioKingReference = _audioManager.AudioKing;
+            aauis = new AllAudioUsedInScene();
             LoadAssets();
-            
+            _audioManager.PlayOrStopTheme(true);
 
 
           if(debugLog) Debug.Log("MainMenuStateConstructed");
@@ -32,12 +33,13 @@ namespace Assets.Code.States
         public void LoadAssets()
         {
 
-            if (debugLog) Debug.Log("Loading Assets for MainMenu"); 
+            if (debugLog) Debug.Log("Loading Assets for MainMenu");
 
-                 audioKingReference._mus.allInOne.clip = Resources.Load<AudioClip>("Audio/Theme");
-                 audioKingReference._fx.clicked = Resources.Load<AudioClip>("Audio/SoundFX/MenuSounds/Audio_ClickBtn");
-                 audioKingReference._fx.back_esc = Resources.Load<AudioClip>("Audio/SoundFX/MenuSounds/Audio_BackEscBtn");
-                 audioKingReference._fx.hoverOver = Resources.Load<AudioClip>("Audio/SoundFX/MenuSounds/Audio_MouseOverBtn");
+            aauis.mainMenyPackage.mus.Add("theme", Resources.Load<AudioClip>("Audio/Theme"));
+            aauis.mainMenyPackage.fx.Add("buttonSounds", Resources.LoadAll<AudioClip>("Audio/SoundFX/MenuSounds"));
+            _audioManager.AAUIS = aauis;
+            _audioManager.AllAudioSources["fullTrackSpeaker"].clip = aauis.mainMenyPackage.mus["theme"];     
+            
 
 
             if (debugLog) Debug.Log("MainMenu Assets Loaded!");    
