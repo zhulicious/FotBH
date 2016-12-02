@@ -46,7 +46,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Graphics\Characters\Lycktgubbe\AI.cs" />
+     <Compile Include="Assets\Graphics\Characters\Guldlock\AI.cs" />
+     <Compile Include="Assets\Graphics\Characters\Guldlock\Guldlock.cs" />
      <Compile Include="Assets\Graphics\Characters\Lycktgubbe\LyktGubbe.cs" />
      <Compile Include="Assets\Graphics\Characters\Treeman\SpawnSwitch.cs" />
      <Compile Include="Assets\Graphics\Characters\Treeman\StoppChase.cs" />
@@ -62,12 +63,16 @@
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\EnemyBehaviour.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\SafeZone.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\Script_Mama_ForestCreature.cs" />
+     <Compile Include="Assets\Scripts\GuldLockCave\GullockCave.cs" />
+     <Compile Include="Assets\Scripts\Interaction Scripts\ChangeScene.cs" />
      <Compile Include="Assets\Scripts\Interaction Scripts\ChatSystem.cs" />
      <Compile Include="Assets\Scripts\Interaction Scripts\Dialogs.cs" />
      <Compile Include="Assets\Scripts\Interaction Scripts\Talk.cs" />
      <Compile Include="Assets\Scripts\Interaction Scripts\TriggerDialog.cs" />
      <Compile Include="Assets\Scripts\Interaction Scripts\TuvaInterations.cs" />
+     <Compile Include="Assets\Scripts\Interaction Scripts\activateEvent.cs" />
      <Compile Include="Assets\Scripts\JumpSpot.cs" />
+     <Compile Include="Assets\Scripts\LyktgubbeENTRY.cs" />
      <Compile Include="Assets\Scripts\MenuScripts\CreditsContent.cs" />
      <Compile Include="Assets\Scripts\MenuScripts\MenuScript.cs" />
      <Compile Include="Assets\Scripts\MenuScripts\PCE_buttonScript.cs" />

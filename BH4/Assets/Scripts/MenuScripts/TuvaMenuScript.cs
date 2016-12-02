@@ -32,7 +32,7 @@ public class TuvaMenuScript : MonoBehaviour {
         tuvaStartPosition = tuva.transform.position;
         tbs = GetComponent<TuvaButtonScript>();
         tuva_animator = GetComponent<Animator>();
-        movingSpeed = 1.5f;
+        movingSpeed = 2.0f;
         keyIndexer = positionsIndexer + 1;
         StartCoroutine("GetTuvaMoving");
 
@@ -88,5 +88,6 @@ public class TuvaMenuScript : MonoBehaviour {
 
         movingCharacter = false;
         tuva.transform.position = tuvaStartPosition;
+        tbs.DisplayKeyButtons(defaultKeyIndexer);
     }
 }

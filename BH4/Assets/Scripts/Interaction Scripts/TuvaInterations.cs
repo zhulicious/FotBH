@@ -17,7 +17,10 @@ public class TuvaInterations : MonoBehaviour {
 
 	void Start () {
 		dontDestroy = GameObject.FindGameObjectWithTag("DontDestroy");
-		dontDestroy.GetComponent<DontDestroy>().SetPositions();
+		if(dontDestroy != null){
+			dontDestroy.GetComponent<DontDestroy>().SetPositions();
+
+		}
 	}
 	void OnTriggerEnter2D(Collider2D col){
 		currentTag = col.gameObject.tag;
@@ -29,12 +32,16 @@ public class TuvaInterations : MonoBehaviour {
 		}else if(currentTag == "CutScene"){
 			col.gameObject.SetActive(false);
 			dontDestroy.GetComponent<DontDestroy>().SavePositions();
-			SceneManager.LoadScene("CS_Guldlock");
+			StartCoroutine(StartCutScene());
+
 
 			//event happen ( cut scene)
 		}else if (currentTag == "Dialog"){
 			dialog.GetComponent<Dialogs>().EventDialog(col.gameObject);
 			col.gameObject.SetActive(false);
+		}else if(currentTag == "ChangeToScene"){
+			GameObject.FindGameObjectWithTag("SaveMe").GetComponent<SaveMe>().SetOutSideSliceScene("Skogsra");
+			SceneManager.LoadScene(col.transform.gameObject.GetComponent<ChangeScene>().ReturnScene());
 		}
 		currentInteractionObject = col.gameObject;
 		if(tuvaDoing == doing.noInteraction || tuvaDoing != doing.alreadyInteracting){
@@ -144,6 +151,10 @@ public class TuvaInterations : MonoBehaviour {
 		}else if(Input.GetKeyDown(KeyCode.I)){
 			TuvaContinueToSkogsra();
 		}
+	}
+	IEnumerator StartCutScene(){
+		yield return new WaitForSeconds(5.0f);
+		SceneManager.LoadScene("CS_Guldlock");
 	}
 
 }
