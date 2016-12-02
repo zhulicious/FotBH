@@ -21,8 +21,8 @@ public class ForestCreatureSecondGen : MonoBehaviour {
     public Transform[] spawnPositions;
     int spawnIndexer = 0;
     Vector3 currentPosition;
-    public Transform chasePosition;
-    public Transform returnPosition;
+    public Transform[] chasePosition;
+    public Transform[] returnPosition;
     float speed;
     int maxDistance = 2;
 
@@ -117,7 +117,7 @@ public class ForestCreatureSecondGen : MonoBehaviour {
     IEnumerator StartTheChase ()
     {
         yield return new WaitForSeconds(4.0f);
-        transform.position = chasePosition.position;
+        transform.position = chasePosition[spawnIndexer].position;
         animations.SetBool("Chasing", true);
         chasing = true;
         yield break;
@@ -131,7 +131,7 @@ public class ForestCreatureSecondGen : MonoBehaviour {
         animations.SetBool("Searching", true);
         animations.SetBool("Chasing", true);
         walking = true;
-        yield return new WaitUntil(() => transform.position.x == returnPosition.position.x);
+        yield return new WaitUntil(() => transform.position.x == returnPosition[spawnIndexer].position.x);
         walking = false;
         spawnIndexer++;
         transform.position = spawnPositions[spawnIndexer].position;
