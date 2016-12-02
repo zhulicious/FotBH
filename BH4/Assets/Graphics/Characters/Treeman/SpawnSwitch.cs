@@ -8,7 +8,7 @@ public class SpawnSwitch : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.name == "Player")
+        if (col.name == "Tuva")
         {
             respawn = true;
         }
