@@ -105,6 +105,7 @@
     <Compile Include="Assets\Scripts\Interaction Scripts\TriggerDialog.cs" />
     <Compile Include="Assets\Scripts\Interaction Scripts\TuvaInterations.cs" />
     <Compile Include="Assets\Scripts\JumpSpot.cs" />
+    <Compile Include="Assets\Scripts\LyktgubbeENTRY.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\CreditsContent.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\MenuScript.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\PCE_buttonScript.cs" />
