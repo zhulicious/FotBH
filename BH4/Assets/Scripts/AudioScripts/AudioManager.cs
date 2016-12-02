@@ -16,10 +16,25 @@ public class AudioManager : MonoBehaviour {
         allAudioSources = new Dictionary<string, AudioSource>();
         allAudioSources.Add("fullTrackSpeaker", fullTrackSpeaker);
         
+        //Music AudioSources
+        allAudioSources.Add("musicMelody", transform.GetChild(4).GetChild(0).GetComponent<AudioSource>());
+        allAudioSources.Add("musicRhythm", transform.GetChild(4).GetChild(1).GetComponent<AudioSource>());
+        allAudioSources.Add("musicBass", transform.GetChild(4).GetChild(2).GetComponent<AudioSource>());
+        allAudioSources.Add("musicPercussion", transform.GetChild(4).GetChild(3).GetComponent<AudioSource>());
+
+        //ATM
+        allAudioSources.Add("atm", transform.GetChild(3).GetComponent<AudioSource>());
+
+        //DIA
+        allAudioSources.Add("dialogueOne", transform.GetChild(0).GetChild(0).GetComponent<AudioSource>());
+        allAudioSources.Add("dialogueTwo", transform.GetChild(0).GetChild(1).GetComponent<AudioSource>());
 
 
-       
-       
+
+
+
+
+
         if (debugLog) Debug.Log("AudioManager Awoken");
     }
 
@@ -111,6 +126,7 @@ public struct AllAudioUsedInScene
 public struct MUS_Storage
 {
     public Dictionary<string, MUS> allTracks;
+    public Dictionary<string, Dictionary<string, AudioClip>> mus_dictionary;
 }
 
 

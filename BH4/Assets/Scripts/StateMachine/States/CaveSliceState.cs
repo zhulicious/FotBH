@@ -1,4 +1,5 @@
 ﻿using Assets.Code.Interfaces; //This state is for the verticle slice.
+using System.Collections.Generic;
 using UnityEngine;              //Author: Axel Stenkrona.
 
 namespace Assets.Code.States
@@ -9,6 +10,7 @@ namespace Assets.Code.States
         private AudioManager _audioManager;
         private AudioKing audioKing;
         private AllAudioUsedInScene aauis;
+        private Dictionary<string, AudioClip> musparts;
 
         private bool debugLog;
 
@@ -24,9 +26,13 @@ namespace Assets.Code.States
             _audioManager = stateMachine_Ref._audioManager; // <<<< AudioManager
 
             aauis = new AllAudioUsedInScene();
-           
+            musparts = new Dictionary<string, AudioClip>();
+            aauis.musicAudioPackage.mus_dictionary.Add("CaveTrollMusic", musparts);
 
             _stateMachine.tuva = GameObject.Find("Tuva");
+            _audioManager.AllAudioSources.Add("tuvaFootStep", stateMachine_Ref.tuva.transform.GetChild(2).GetComponent<AudioSource>());
+            _audioManager.AllAudioSources.Add("tuvaDIA", stateMachine_Ref.tuva.transform.GetChild(3).GetComponent<AudioSource>());
+
 
             UnloadAssets();
             LoadAssets();
@@ -43,9 +49,13 @@ namespace Assets.Code.States
             if (debugLog) Debug.Log("Loading Assets for SliceState...");
 
 
-            aauis.tuvaAudioPackage.foley.Add("puddleFootSteps", Resources.LoadAll<AudioClip>("Audio/Actor/Tuva/FootSteps/Cave"));
-            
-            
+            aauis.tuvaAudioPackage.foley.Add("caveFootSteps", Resources.LoadAll<AudioClip>("Audio/Actor/Tuva/FootSteps/Cave"));
+            aauis.musicAudioPackage.mus_dictionary["CaveTrollMusic"].Add("wholeMelody", Resources.Load<AudioClip>("Audio/Music/Troll/Whole/Melody"));
+            aauis.musicAudioPackage.mus_dictionary["CaveTrollMusic"].Add("wholeBass", Resources.Load<AudioClip>("Audio/Music/Troll/Whole/Bass"));
+            aauis.musicAudioPackage.mus_dictionary["CaveTrollMusic"].Add("wholePercussion", Resources.Load<AudioClip>("Audio/Music/Troll/Whole/Percussion"));
+
+
+
 
 
             if (debugLog) Debug.Log("SliceState Loaded");
