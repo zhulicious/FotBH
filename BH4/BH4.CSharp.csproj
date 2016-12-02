@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -69,9 +66,6 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -94,16 +88,19 @@
     <Compile Include="Assets\Scripts\Background\ScrollinBackground.cs" />
     <Compile Include="Assets\Scripts\CS_Guldlock.cs" />
     <Compile Include="Assets\Scripts\DontDestroy.cs" />
+    <Compile Include="Assets\Scripts\ForestCreatureSecondGen.cs" />
     <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\ActivateMonster.cs" />
     <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\SafeZone.cs" />
     <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\Script_Mama_ForestCreature.cs" />
     <Compile Include="Assets\Scripts\GuldLockCave\GullockCave.cs" />
+    <Compile Include="Assets\Scripts\Interaction Scripts\ChangeScene.cs" />
     <Compile Include="Assets\Scripts\Interaction Scripts\ChatSystem.cs" />
     <Compile Include="Assets\Scripts\Interaction Scripts\Dialogs.cs" />
     <Compile Include="Assets\Scripts\Interaction Scripts\Talk.cs" />
     <Compile Include="Assets\Scripts\Interaction Scripts\TriggerDialog.cs" />
     <Compile Include="Assets\Scripts\Interaction Scripts\TuvaInterations.cs" />
+    <Compile Include="Assets\Scripts\Interaction Scripts\activateEvent.cs" />
     <Compile Include="Assets\Scripts\JumpSpot.cs" />
     <Compile Include="Assets\Scripts\LyktgubbeENTRY.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\CreditsContent.cs" />
@@ -116,6 +113,7 @@
     <Compile Include="Assets\Scripts\MoviePlayer.cs" />
     <Compile Include="Assets\Scripts\OutsideSlice\ChoiceTree.cs" />
     <Compile Include="Assets\Scripts\OutsideSlice\ClickOption.cs" />
+    <Compile Include="Assets\Scripts\SafeZones.cs" />
     <Compile Include="Assets\Scripts\SaveMe.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Interfaces\IStateBase.cs" />
     <Compile Include="Assets\Scripts\StateMachine\StateMachine.cs" />
