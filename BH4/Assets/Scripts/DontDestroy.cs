@@ -4,8 +4,10 @@ using System.Collections;
 public class DontDestroy : MonoBehaviour {
 
 	public Vector3 tuvaPosition;
+	public Vector3 lanternPosition;
 
 	GameObject tuva;
+	GameObject lantern;
 	GameObject trigger;
 
 	bool triggerUsed;
@@ -22,6 +24,7 @@ public class DontDestroy : MonoBehaviour {
 			DontDestroyOnLoad(transform.gameObject);
 			FindGameObjects();
 			tuvaPosition = tuva.transform.position;
+			lanternPosition = lantern.transform.position;
 		}
 	}
 	void Start () {
@@ -29,6 +32,7 @@ public class DontDestroy : MonoBehaviour {
 	}
 	void FindGameObjects(){
 		tuva = GameObject.FindGameObjectWithTag("Tuva");
+		lantern = GameObject.FindGameObjectWithTag("Lantern");
 		trigger = GameObject.FindGameObjectWithTag("CutScene");
 	}
 	public void SetPositions(){
@@ -37,9 +41,11 @@ public class DontDestroy : MonoBehaviour {
 			DestroyTrigger();
 		}
 		tuva.transform.position = tuvaPosition;
+		lantern.transform.position = lanternPosition;
 	}
 	public void SavePositions(){
 		tuvaPosition = tuva.transform.position;
+		lanternPosition = lantern.transform.position;
 
 		triggerUsed = true;
 	}
