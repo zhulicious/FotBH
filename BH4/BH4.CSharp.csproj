@@ -81,6 +81,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Graphics\Characters\Guldlock\AI.cs" />
+    <Compile Include="Assets\Graphics\Characters\Guldlock\Guldlock.cs" />
+    <Compile Include="Assets\Graphics\Characters\Lycktgubbe\LyktGubbe.cs" />
     <Compile Include="Assets\Graphics\Characters\Treeman\SpawnSwitch.cs" />
     <Compile Include="Assets\Graphics\Characters\Treeman\StoppChase.cs" />
     <Compile Include="Assets\Scripts\AIAnimationScript.cs" />
@@ -95,6 +98,7 @@
     <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\SafeZone.cs" />
     <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\Script_Mama_ForestCreature.cs" />
+    <Compile Include="Assets\Scripts\GuldLockCave\GullockCave.cs" />
     <Compile Include="Assets\Scripts\Interaction Scripts\ChatSystem.cs" />
     <Compile Include="Assets\Scripts\Interaction Scripts\Dialogs.cs" />
     <Compile Include="Assets\Scripts\Interaction Scripts\Talk.cs" />
@@ -149,6 +153,7 @@
     <None Include="Assets\Resources\Text\Boy4_NoCompass_WithBoy_choice_2.txt" />
     <None Include="Assets\Resources\Text\Boy4_NoCompass_WithBoy_header.txt" />
     <None Include="Assets\Resources\Text\Boy4_NoCompass_WithBoy_main.txt" />
+    <None Include="Assets\Resources\Text\ChoiceTree.txt" />
     <None Include="Assets\Resources\Text\ForestProtector_choice_1.txt" />
     <None Include="Assets\Resources\Text\ForestProtector_header.txt" />
     <None Include="Assets\Resources\Text\ForestProtector_main.txt" />
