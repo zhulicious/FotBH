@@ -68,7 +68,19 @@ public class AudioManager : MonoBehaviour {
             allAudioSources["atm"].Stop();
         }
     }
-    
+    public void PlayGameOver(bool b) // Turn on or off GameOver Audio.
+    {
+        if (b)
+        {
+            if (debugLog) Debug.Log("Audio: Playing GameOver.");
+            allAudioSources["fullTrackSpeaker"].Play();
+        }
+        else
+        {
+            if (debugLog) Debug.Log("Audio: GameOver Stopped.");
+            allAudioSources["fullTrackSpeaker"].Stop();
+        }
+    }
     //Properties
 
    
