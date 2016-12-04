@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
 
-    private Dictionary<string, AudioSource> allAudioSources;
-    private AllAudioUsedInScene aauis;
+    private Dictionary<string, AudioSource> allAudioSources;                    // AudioSources:
+    private AllAudioUsedInScene aauis;                                          // fullTrackSpeaker, musicMelody, musicRhythm, musicPercussion, musicBass, atm, dialogueOne, dialogueTwo
     private AudioSource fullTrackSpeaker;
+    
 
     public bool debugLog;
 
@@ -40,21 +41,7 @@ public class AudioManager : MonoBehaviour {
 
 
 
-    public void PlayOrStopTheme(bool b) // if b is true "ThemeSong" will play. If b is false "ThemeSong" will stop;
-    {
-        {
-            if (b)
-            {
-                if (debugLog) Debug.Log("Audio: Playing Theme.");
-                allAudioSources["fullTrackSpeaker"].Play();
-            }
-            else
-            {
-                if (debugLog) Debug.Log("Audio: Theme Stopped");
-                allAudioSources["fullTrackSpeaker"].Stop();
-            }
-        }
-    }
+   
     public void PlayATM(bool b) // Turn on or off the ATM audio.
     {
       if(b)
@@ -68,25 +55,39 @@ public class AudioManager : MonoBehaviour {
             allAudioSources["atm"].Stop();
         }
     }
-    public void PlayGameOver(bool b) // Turn on or off GameOver Audio.
+   
+    public void PlayMusic(string trackname)
     {
-        if (b)
-        {
-            if (debugLog) Debug.Log("Audio: Playing GameOver.");
-            allAudioSources["fullTrackSpeaker"].Play();
-        }
-        else
-        {
-            if (debugLog) Debug.Log("Audio: GameOver Stopped.");
-            allAudioSources["fullTrackSpeaker"].Stop();
-        }
+        allAudioSources["fullTrackSpeaker"].clip = aauis.musicAudioPackage.musicTracks[trackname];
+        allAudioSources["fullTrackSpeaker"].Play();
     }
+    public void StopAudioSource(string audioSourceName)
+    {
+        allAudioSources[audioSourceName].Stop();
+    }
+    public void PlayDIAOne(AudioClip ac)
+    {
+        allAudioSources["dialogueOne"].PlayOneShot(ac);
+    }
+    public void PlayDIATwo(AudioClip ac)
+    {
+        allAudioSources["dialogueTwo"].PlayOneShot(ac);
+    }
+   
+    
+
+   
+
+
+
+
     //Properties
 
    
   
     public AllAudioUsedInScene AAUIS { get { return aauis;} set { aauis = value; } }
     public Dictionary<string, AudioSource> AllAudioSources { get{ return allAudioSources; } set{ allAudioSources = value; } }
+    
     
   
 
@@ -111,10 +112,7 @@ public struct FX
 {
   
 }
-public struct Foley
-{
-    public AudioClip[][] footSteps;
-}
+
 
 public struct MUS
 {
@@ -124,13 +122,8 @@ public struct MUS
     public AudioSource percussion;
     public AudioSource allInOne;
 }
-public struct AudioKing
-{
-    public DIA _dia;
-    public FX _fx;
-    public Foley _foley;
-    public MUS _mus;
-}
+
+
 
 public struct AllAudioUsedInScene
 {
@@ -144,8 +137,8 @@ public struct AllAudioUsedInScene
 }
 public struct MUS_Storage
 {
-    public Dictionary<string, MUS> allTracks;
     public Dictionary<string, Dictionary<string, AudioClip>> mus_dictionary;
+    public Dictionary<string, AudioClip> musicTracks;
 }
 
 

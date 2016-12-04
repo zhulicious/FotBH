@@ -8,7 +8,7 @@ namespace Assets.Code.States
 		private StateMachine _stateMachine;
         private AudioManager _audioManager;
         private AllAudioUsedInScene aauis;
-        private AudioKing audioKingReference;
+      
         private AudioClip theme;
 
         public bool debugLog;
@@ -20,8 +20,7 @@ namespace Assets.Code.States
             _audioManager = _stateMachine._audioManager;
             aauis = new AllAudioUsedInScene();
             LoadAssets();
-            _audioManager.PlayOrStopTheme(true);
-
+            _audioManager.PlayMusic("Theme");
 
           if(debugLog) Debug.Log("MainMenuStateConstructed");
 		}
@@ -35,11 +34,10 @@ namespace Assets.Code.States
 
             if (debugLog) Debug.Log("Loading Assets for MainMenu");
 
-            aauis.mainMenyPackage.mus.Add("theme", Resources.Load<AudioClip>("Audio/Theme"));
+            aauis.musicAudioPackage.musicTracks.Add("Theme", Resources.Load<AudioClip>("Audio/Theme"));
             aauis.mainMenyPackage.fx.Add("buttonSounds", Resources.LoadAll<AudioClip>("Audio/SoundFX/MenuSounds"));
             _audioManager.AAUIS = aauis;
-            _audioManager.AllAudioSources["fullTrackSpeaker"].clip = aauis.mainMenyPackage.mus["theme"];     
-            
+           
 
 
             if (debugLog) Debug.Log("MainMenu Assets Loaded!");    

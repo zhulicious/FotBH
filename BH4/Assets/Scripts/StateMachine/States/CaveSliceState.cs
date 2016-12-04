@@ -8,7 +8,7 @@ namespace Assets.Code.States
     {
         private StateMachine _stateMachine;
         private AudioManager _audioManager;
-        private AudioKing audioKing;
+     
         private AllAudioUsedInScene aauis;
         private Dictionary<string, AudioClip> musparts;
 
@@ -51,13 +51,18 @@ namespace Assets.Code.States
         {
             if (debugLog) Debug.Log("Loading Assets for SliceState...");
 
-
+            //Folay:
             aauis.tuvaAudioPackage.foley.Add("caveFootSteps", Resources.LoadAll<AudioClip>("Audio/Actor/Tuva/FootSteps/Cave"));
+
+            //Music
             aauis.musicAudioPackage.mus_dictionary["CaveTrollMusic"].Add("wholeMelody", Resources.Load<AudioClip>("Audio/Music/Troll/Whole/Melody"));
             aauis.musicAudioPackage.mus_dictionary["CaveTrollMusic"].Add("wholeBass", Resources.Load<AudioClip>("Audio/Music/Troll/Whole/Bass"));
             aauis.musicAudioPackage.mus_dictionary["CaveTrollMusic"].Add("wholePercussion", Resources.Load<AudioClip>("Audio/Music/Troll/Whole/Percussion"));
-            aauis.atm = Resources.Load<AudioClip>("Audio/BackgroundTracks/Audio_ForestBackground");
+            aauis.musicAudioPackage.musicTracks.Add("Trollin", Resources.Load<AudioClip>("Audio/Music/Troll/Trollin"));
 
+
+            //atm
+            aauis.atm = Resources.Load<AudioClip>("Audio/BackgroundTracks/Audio_ForestBackground");
             _audioManager.AllAudioSources["atm"].clip = aauis.atm;
 
 
@@ -67,7 +72,7 @@ namespace Assets.Code.States
         public void UnloadAssets()
         {
             if (debugLog) Debug.Log("Unloading not needed Assets");
-            audioKing._mus.allInOne = null;
+           
             if (debugLog) Debug.Log("Assets unloaded.");
 
         }
