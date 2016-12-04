@@ -1,38 +1,44 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic; //Author: Axel Stenkrona.
+using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
 
-    private AudioClip[] backgroundTracks;
-
-    private AudioClip[] caveFootsteps;
-    private AudioClip[] puddleFootsteps;
-    private AudioClip[] tuvaVoice;
-
-    private AudioClip[] miscellaneous;
-    private AudioClip[] menuSounds;
-
-    private AudioKing audioKing;
+    private Dictionary<string, AudioSource> allAudioSources;
+    private AllAudioUsedInScene aauis;
+    private AudioSource fullTrackSpeaker;
 
     public bool debugLog;
 
     void Awake()
     {
         if (debugLog) Debug.Log("AudioManager Awaking");
+        fullTrackSpeaker = transform.GetChild(4).GetChild(4).GetComponent<AudioSource>();
+        allAudioSources = new Dictionary<string, AudioSource>();
+        allAudioSources.Add("fullTrackSpeaker", fullTrackSpeaker);
 
-        audioKing = new AudioKing();
-        audioKing._dia = new DIA();
-        audioKing._fx = new FX();
-        audioKing._foley = new Foley();
-        audioKing._atm = new ATM();
-        audioKing._mus = new MUS();
+        //Music AudioSources
+        allAudioSources.Add("musicMelody", transform.GetChild(4).GetChild(0).GetComponent<AudioSource>());
+        allAudioSources.Add("musicRhythm", transform.GetChild(4).GetChild(1).GetComponent<AudioSource>());
+        allAudioSources.Add("musicBass", transform.GetChild(4).GetChild(2).GetComponent<AudioSource>());
+        allAudioSources.Add("musicPercussion", transform.GetChild(4).GetChild(3).GetComponent<AudioSource>());
+
+        //ATM
+        allAudioSources.Add("atm", transform.GetChild(3).GetComponent<AudioSource>());
+
+        //DIA
+        allAudioSources.Add("dialogueOne", transform.GetChild(0).GetChild(0).GetComponent<AudioSource>());
+        allAudioSources.Add("dialogueTwo", transform.GetChild(0).GetChild(1).GetComponent<AudioSource>());
 
 
-       
-       
+
+
+
+
+
         if (debugLog) Debug.Log("AudioManager Awoken");
     }
 
- 
+
 
     public void PlayOrStopTheme(bool b) // if b is true "ThemeSong" will play. If b is false "ThemeSong" will stop;
     {
@@ -40,28 +46,49 @@ public class AudioManager : MonoBehaviour {
             if (b)
             {
                 if (debugLog) Debug.Log("Audio: Playing Theme.");
-                AudioKing._mus.allInOne.Play();
+                allAudioSources["fullTrackSpeaker"].Play();
             }
             else
             {
                 if (debugLog) Debug.Log("Audio: Theme Stopped");
-                AudioKing._mus.allInOne.Stop();
+                allAudioSources["fullTrackSpeaker"].Stop();
             }
+        }
+    }
+    public void PlayATM(bool b) // Turn on or off the ATM audio.
+    {
+      if(b)
+        {
+            if (debugLog) Debug.Log("Audio: Playing ATM.");
+            allAudioSources["atm"].Play();
+        }
+      else
+        {
+            if (debugLog) Debug.Log("Audio: ATM Stopped.");
+            allAudioSources["atm"].Stop();
         }
     }
     
     //Properties
 
    
-    public AudioClip[] BackgroundTracks { get { return backgroundTracks; } set { backgroundTracks = value; } }
-    public AudioClip[] Miscellaneous { get { return miscellaneous; } set { miscellaneous = value; } } // "Audio_BranchSnap", "Audio_OwlHooting", "Audio_RustlingBushes", "Audio_SearchingInBushes", "Audio_TwigSnap".
-    public AudioClip[] MenuSounds { get { return menuSounds; } set { menuSounds = value; } } // "Audio_BackEscBtn", "Audio_ClickBtn", "Audio_MouseOverBtn".
-
-    public AudioKing AudioKing {get{return audioKing;} set{audioKing = value;}}
+  
+    public AllAudioUsedInScene AAUIS { get { return aauis;} set { aauis = value; } }
+    public Dictionary<string, AudioSource> AllAudioSources { get{ return allAudioSources; } set{ allAudioSources = value; } }
+    
   
 
 
 }
+public struct AudioPackage
+{
+    public Dictionary<string, AudioClip[]> foley;
+    public Dictionary<string, AudioClip[]> fx;
+    public Dictionary<string, AudioClip> dia;
+    public Dictionary<string, AudioClip> atm;
+    public Dictionary<string, AudioClip> mus;
+}
+
 
 public struct DIA
 {
@@ -70,24 +97,13 @@ public struct DIA
 }
 public struct FX
 {
-    public AudioSource buttons;
-    public AudioClip clicked;
-    public AudioClip back_esc;
-    public AudioClip hoverOver;
+  
 }
 public struct Foley
 {
-    public AudioSource playerAudioReference;
-    public AudioSource nPCAudioReference;
-    public AudioClip[] tuva_PuddleSteps;
-    public AudioClip[] tuva_CaveSteps;
+    public AudioClip[][] footSteps;
 }
-public struct ATM
-{
-    public AudioSource currentTrack;
-    public AudioSource nextTrack;
-   
-}
+
 public struct MUS
 {
     public AudioSource melody;
@@ -101,8 +117,25 @@ public struct AudioKing
     public DIA _dia;
     public FX _fx;
     public Foley _foley;
-    public ATM _atm;
     public MUS _mus;
 }
+
+public struct AllAudioUsedInScene
+{
+    public AudioPackage tuvaAudioPackage;
+    public AudioPackage lgAudioPackage;
+    public AudioPackage fcAudioPackage;
+    public AudioPackage glAudioPackage;
+    public AudioPackage mainMenyPackage;
+    public MUS_Storage musicAudioPackage;
+    public AudioClip atm;
+}
+public struct MUS_Storage
+{
+    public Dictionary<string, MUS> allTracks;
+    public Dictionary<string, Dictionary<string, AudioClip>> mus_dictionary;
+}
+
+
 
 
