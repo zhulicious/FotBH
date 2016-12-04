@@ -35,6 +35,8 @@ namespace Assets.Code.States
             UnloadAssets();
             LoadAssets();
 
+            _audioManager.PlayATM(true);
+
             if (debugLog) Debug.Log("SliceState constructed!");
 
         }
@@ -57,7 +59,7 @@ namespace Assets.Code.States
             aauis.lgAudioPackage.foley.Add("grassFootsteps", Resources.LoadAll<AudioClip>("Audio/Actor/Tuva/FootSteps/Grass"));
 
             //ATM
-            
+            aauis.atm = Resources.Load<AudioClip>("Audio/BackgroundTracks/Audio_ForestBackground");
 
             //Music
             forestCreatureTrack.Add("wholeBass", Resources.Load<AudioClip>("Audio/Music/TreeCreature/Bass"));
@@ -82,7 +84,9 @@ namespace Assets.Code.States
         public void UnloadAssets()
         {
             if (debugLog) Debug.Log("Unloading not needed Assets");
-           
+
+            _audioManager.PlayATM(false);
+            aauis.atm = null;
             
             if (debugLog) Debug.Log("Assets unloaded.");
 

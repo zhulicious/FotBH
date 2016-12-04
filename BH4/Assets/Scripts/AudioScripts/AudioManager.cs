@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour {
         fullTrackSpeaker = transform.GetChild(4).GetChild(4).GetComponent<AudioSource>();
         allAudioSources = new Dictionary<string, AudioSource>();
         allAudioSources.Add("fullTrackSpeaker", fullTrackSpeaker);
-        
+
         //Music AudioSources
         allAudioSources.Add("musicMelody", transform.GetChild(4).GetChild(0).GetComponent<AudioSource>());
         allAudioSources.Add("musicRhythm", transform.GetChild(4).GetChild(1).GetComponent<AudioSource>());
@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour {
         if (debugLog) Debug.Log("AudioManager Awoken");
     }
 
- 
+
 
     public void PlayOrStopTheme(bool b) // if b is true "ThemeSong" will play. If b is false "ThemeSong" will stop;
     {
@@ -55,7 +55,19 @@ public class AudioManager : MonoBehaviour {
             }
         }
     }
-    
+    public void PlayATM(bool b) // Turn on or off the ATM audio.
+    {
+      if(b)
+        {
+            if (debugLog) Debug.Log("Audio: Playing ATM.");
+            allAudioSources["atm"].Play();
+        }
+      else
+        {
+            if (debugLog) Debug.Log("Audio: ATM Stopped.");
+            allAudioSources["atm"].Stop();
+        }
+    }
     
     //Properties
 
@@ -91,12 +103,7 @@ public struct Foley
 {
     public AudioClip[][] footSteps;
 }
-public struct ATM
-{
-    public AudioSource currentTrack;
-    public AudioSource nextTrack;
-   
-}
+
 public struct MUS
 {
     public AudioSource melody;
@@ -110,7 +117,6 @@ public struct AudioKing
     public DIA _dia;
     public FX _fx;
     public Foley _foley;
-    public ATM _atm;
     public MUS _mus;
 }
 
@@ -122,6 +128,7 @@ public struct AllAudioUsedInScene
     public AudioPackage glAudioPackage;
     public AudioPackage mainMenyPackage;
     public MUS_Storage musicAudioPackage;
+    public AudioClip atm;
 }
 public struct MUS_Storage
 {

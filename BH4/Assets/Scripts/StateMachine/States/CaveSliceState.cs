@@ -37,6 +37,9 @@ namespace Assets.Code.States
             UnloadAssets();
             LoadAssets();
 
+            _audioManager.PlayATM(true);
+          
+
             if (debugLog) Debug.Log("SliceState constructed!");
 
         }
@@ -53,8 +56,9 @@ namespace Assets.Code.States
             aauis.musicAudioPackage.mus_dictionary["CaveTrollMusic"].Add("wholeMelody", Resources.Load<AudioClip>("Audio/Music/Troll/Whole/Melody"));
             aauis.musicAudioPackage.mus_dictionary["CaveTrollMusic"].Add("wholeBass", Resources.Load<AudioClip>("Audio/Music/Troll/Whole/Bass"));
             aauis.musicAudioPackage.mus_dictionary["CaveTrollMusic"].Add("wholePercussion", Resources.Load<AudioClip>("Audio/Music/Troll/Whole/Percussion"));
+            aauis.atm = Resources.Load<AudioClip>("Audio/BackgroundTracks/Audio_ForestBackground");
 
-
+            _audioManager.AllAudioSources["atm"].clip = aauis.atm;
 
 
 
