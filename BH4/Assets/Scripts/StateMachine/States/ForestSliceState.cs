@@ -8,7 +8,7 @@ namespace Assets.Code.States
     {
         private StateMachine _stateMachine;
         private AudioManager _audioManager;
-        private AudioKing audioKing;
+       
         private AllAudioUsedInScene aauis;
         private Dictionary<string, AudioClip> forestCreatureTrack;
         private Dictionary<string, AudioClip> deathTrack;
@@ -51,9 +51,11 @@ namespace Assets.Code.States
             //ForestCreature
             aauis.fcAudioPackage.fx.Add("screams", Resources.LoadAll<AudioClip>("Audio/Actor/ForestCreature"));
 
-            //Tuva
+            //TuvaFolay
             aauis.tuvaAudioPackage.foley.Add("puddleFootsteps", Resources.LoadAll<AudioClip>("Audio/Actor/Tuva/FootSteps/Puddles"));
             aauis.tuvaAudioPackage.foley.Add("grassFootsteps", Resources.LoadAll<AudioClip>("Audio/Actor/Tuva/FootSteps/Grass"));
+            aauis.tuvaAudioPackage.foley.Add("woodFootsteps", Resources.LoadAll<AudioClip>("Audio/Actor/Tuva/FootSteps/Wood"));
+
 
             //LyktGubben
             aauis.lgAudioPackage.foley.Add("grassFootsteps", Resources.LoadAll<AudioClip>("Audio/Actor/Tuva/FootSteps/Grass"));
@@ -66,15 +68,12 @@ namespace Assets.Code.States
             forestCreatureTrack.Add("wholeHigh", Resources.Load<AudioClip>("Audio/Music/TreeCreature/High"));
             forestCreatureTrack.Add("wholePercussion", Resources.Load<AudioClip>("Audio/Music/TreeCreature/Percussion"));
 
-            deathTrack.Add("wholeChoir", Resources.Load<AudioClip>("Audio/Music/Death/ChoirWhole"));
-            deathTrack.Add("wholeBass", Resources.Load<AudioClip>("Audio/Music/Death/BassWhole"));
-            deathTrack.Add("wholeRhytm", Resources.Load<AudioClip>("Audio/Music/Death/RhytmWhole"));
-            deathTrack.Add("wholePercussion", Resources.Load<AudioClip>("Audio/Music/Death/PercussionWhole"));
+            aauis.musicAudioPackage.musicTracks.Add("GameOver", Resources.Load<AudioClip>("Audio/Music/GameOver"));
             
 
 
             aauis.musicAudioPackage.mus_dictionary.Add("ForestCreature", forestCreatureTrack);
-            aauis.musicAudioPackage.mus_dictionary.Add("Death", deathTrack);
+            
 
 
 

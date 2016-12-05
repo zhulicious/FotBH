@@ -29,7 +29,9 @@ public class StateMachine : MonoBehaviour {
 
     public void SwitchState(IStateBase newState)
     {
+      
         activeState = newState;
+
     }
 
     public bool DebugLog {get{ return debugLog; } set{debugLog = value;}}
