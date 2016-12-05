@@ -6,7 +6,11 @@ public class AudioManager : MonoBehaviour {
     private Dictionary<string, AudioSource> allAudioSources;                    // AudioSources:
     private AllAudioUsedInScene aauis;                                          // fullTrackSpeaker, musicMelody, musicRhythm, musicPercussion, musicBass, atm, dialogueOne, dialogueTwo
     private AudioSource fullTrackSpeaker;
-    
+ 
+
+    private int fcAudioStateIndex;
+    private bool fcActive;
+
 
     public bool debugLog;
 
@@ -37,6 +41,13 @@ public class AudioManager : MonoBehaviour {
 
 
         if (debugLog) Debug.Log("AudioManager Awoken");
+    }
+    void Update()
+    {
+        if (fcActive)
+        {
+            ForestCreatureAudioStates(fcAudioStateIndex);
+        }
     }
 
 
@@ -73,9 +84,64 @@ public class AudioManager : MonoBehaviour {
     {
         allAudioSources["dialogueTwo"].PlayOneShot(ac);
     }
-   
-    
+    public void ForestCreatureAudioStates(int state) 
+    {
+        switch (state)
+        {
+            case 0: LerpVolume(1f,"musicBass", 0.5f);
+                    LerpVolume(0f, "musicMelody", 0.5f);
+                    LerpVolume(0f, "musicPercussion", 0.5f);
+                break;
 
+            case 1: LerpVolume(1f, "musicMelody", 0.5f);
+                
+                break;
+
+            case 2: LerpVolume(0f, "musicBass", 0.25f);
+                    LerpVolume(0f, "musicMelody", 0.25f);
+                    LerpVolume(1f, "musicPercussion", 0.25f);
+                    
+                break;
+
+                    
+        }
+            
+    }
+    public void LerpVolume(float wantedvolume, string audioSourceName, float time) //<<<<Volume is the float you want to fade to.
+    {
+        float currentVolune = allAudioSources[audioSourceName].volume;
+        AudioSource audioSource = allAudioSources[audioSourceName];
+        audioSource.volume = Mathf.Lerp(audioSource.volume, wantedvolume, time * Time.deltaTime);
+    }    
+    public void ActivateAudio_FC(bool b)
+    {
+        if (debugLog) Debug.Log("Activate Audio_FC: " + b.ToString());
+
+        ActivateAllMusicTracks(false);
+
+         AllAudioSources["musicBass"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeBass"]; //Placing audiotracks in correct audiosource.
+         AllAudioSources["musicMelody"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeMelody"];
+         AllAudioSources["musicPercussion"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeMelody"];
+
+        ActivateAllMusicTracks(true);
+
+        fcActive = b;
+    } //< This should be called when the ForestCreature is triggered.
+    public void ActivateAllMusicTracks(bool o)
+    {
+        if(o)
+        {
+            AllAudioSources["musicBass"].Play();
+            AllAudioSources["musicMelody"].Play();
+            allAudioSources["musicPercussion"].Play();
+        }
+        else
+        {
+            AllAudioSources["musicBass"].Stop();
+            AllAudioSources["musicMelody"].Stop();
+            allAudioSources["musicPercussion"].Stop();
+        }
+    } // Call this if you want to play or stop all four music tracks (Not the theme track).
    
 
 
@@ -87,6 +153,7 @@ public class AudioManager : MonoBehaviour {
   
     public AllAudioUsedInScene AAUIS { get { return aauis;} set { aauis = value; } }
     public Dictionary<string, AudioSource> AllAudioSources { get{ return allAudioSources; } set{ allAudioSources = value; } }
+ 
     
     
   

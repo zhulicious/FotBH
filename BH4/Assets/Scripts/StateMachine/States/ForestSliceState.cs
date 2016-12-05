@@ -11,7 +11,7 @@ namespace Assets.Code.States
        
         private AllAudioUsedInScene aauis;
         private Dictionary<string, AudioClip> forestCreatureTrack;
-        private Dictionary<string, AudioClip> deathTrack;
+        private Dictionary<string, AudioClip> gameover;
 
         private bool debugLog;
 
@@ -29,7 +29,7 @@ namespace Assets.Code.States
             _audioManager = stateMachine_Ref._audioManager;
             aauis = _audioManager.AAUIS;
             forestCreatureTrack = new Dictionary<string, AudioClip>();
-            deathTrack = new Dictionary<string, AudioClip>();
+            gameover = new Dictionary<string, AudioClip>();
             _stateMachine.tuva = GameObject.Find("Tuva");
 
             UnloadAssets();
@@ -67,6 +67,11 @@ namespace Assets.Code.States
             forestCreatureTrack.Add("wholeBass", Resources.Load<AudioClip>("Audio/Music/TreeCreature/Bass"));
             forestCreatureTrack.Add("wholeHigh", Resources.Load<AudioClip>("Audio/Music/TreeCreature/High"));
             forestCreatureTrack.Add("wholePercussion", Resources.Load<AudioClip>("Audio/Music/TreeCreature/Percussion"));
+
+            
+            _audioManager.AllAudioSources["musicBass"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeBass"]; //Placing audiotracks in correct audiosource.
+            _audioManager.AllAudioSources["musicMelody"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeMelody"];
+           _audioManager.AllAudioSources["musicPercussion"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeMelody"];
 
             aauis.musicAudioPackage.musicTracks.Add("GameOver", Resources.Load<AudioClip>("Audio/Music/GameOver"));
             
