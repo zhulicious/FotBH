@@ -59,6 +59,8 @@
      <Compile Include="Assets\Scripts\Background\ScrollinBackground.cs" />
      <Compile Include="Assets\Scripts\CS_Guldlock.cs" />
      <Compile Include="Assets\Scripts\DontDestroy.cs" />
+     <Compile Include="Assets\Scripts\ENDSKOGTRIGGER.cs" />
+     <Compile Include="Assets\Scripts\ForestCreatureSecondGen.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\ActivateMonster.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\EnemyBehaviour.cs" />
      <Compile Include="Assets\Scripts\ForestCreature_Encounter_Scripts\SafeZone.cs" />
@@ -83,14 +85,16 @@
      <Compile Include="Assets\Scripts\MoviePlayer.cs" />
      <Compile Include="Assets\Scripts\OutsideSlice\ChoiceTree.cs" />
      <Compile Include="Assets\Scripts\OutsideSlice\ClickOption.cs" />
+     <Compile Include="Assets\Scripts\SafeZones.cs" />
      <Compile Include="Assets\Scripts\SaveMe.cs" />
      <Compile Include="Assets\Scripts\StateMachine\Interfaces\IStateBase.cs" />
      <Compile Include="Assets\Scripts\StateMachine\StateMachine.cs" />
      <Compile Include="Assets\Scripts\StateMachine\States\AntiSliceState.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\States\CaveSliceState.cs" />
      <Compile Include="Assets\Scripts\StateMachine\States\CutSceneOneState.cs" />
      <Compile Include="Assets\Scripts\StateMachine\States\CutSceneTwoState.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\States\ForestSliceState.cs" />
      <Compile Include="Assets\Scripts\StateMachine\States\MainMenuState.cs" />
-     <Compile Include="Assets\Scripts\StateMachine\States\SliceState.cs" />
      <None Include="Assets\Resources\Text\Kallra_Stage1_header.txt" />
      <None Include="Assets\Resources\Text\Kallra_Stage1_choice_2.txt" />
      <None Include="Assets\Resources\Text\Sjora_header.txt" />
@@ -159,9 +163,6 @@
      <None Include="Assets\Resources\Text\Skogsra_choice_3.txt" />
      <None Include="Assets\Resources\Text\TheNeck_header.txt" />
      <None Include="Assets\Resources\Text\Boy2_WithBoy_main.txt" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -176,9 +177,6 @@
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
