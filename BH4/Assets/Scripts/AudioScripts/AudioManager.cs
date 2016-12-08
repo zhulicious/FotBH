@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic; //Author: Axel Stenkrona.
+﻿using System.Collections;
+using System.Collections.Generic; //Author: Axel Stenkrona.
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
@@ -6,17 +7,39 @@ public class AudioManager : MonoBehaviour {
     private Dictionary<string, AudioSource> allAudioSources;                    // AudioSources:
     private AllAudioUsedInScene aauis;                                          // fullTrackSpeaker, musicMelody, musicRhythm, musicPercussion, musicBass, atm, dialogueOne, dialogueTwo
     private AudioSource fullTrackSpeaker;
- 
+    private Dictionary<string, AudioClip> forestCreatureTrack;
 
     private int fcAudioStateIndex;
     private bool fcActive;
+    private bool isTuvaSafe;
 
+    private bool fadeinOrout;
+    private float time;
+    private AudioSource fadeAoudioSource;
 
     public bool debugLog;
 
     void Awake()
     {
         if (debugLog) Debug.Log("AudioManager Awaking");
+
+        AAUIS = new AllAudioUsedInScene();
+        aauis.fcAudioPackage = new AudioPackage();
+        aauis.fcAudioPackage.fx = new Dictionary<string, AudioClip[]>();
+        aauis.musicAudioPackage = new MUS_Storage();
+        aauis.musicAudioPackage.mus_dictionary = new Dictionary<string, Dictionary<string, AudioClip>>();
+        aauis.musicAudioPackage.musicTracks = new Dictionary<string, AudioClip>();
+        aauis.atm = new Dictionary<string, AudioClip>();
+
+        aauis.tuvaAudioPackage = new AudioPackage();
+        aauis.tuvaAudioPackage.foley = new Dictionary<string, AudioClip[]>();
+
+        aauis.lgAudioPackage = new AudioPackage();
+        aauis.lgAudioPackage.foley = new Dictionary<string, AudioClip[]>();
+
+        forestCreatureTrack = new Dictionary<string, AudioClip>();
+        aauis.musicAudioPackage.mus_dictionary.Add("ForestCreature", forestCreatureTrack);
+
         fullTrackSpeaker = transform.GetChild(4).GetChild(4).GetComponent<AudioSource>();
         allAudioSources = new Dictionary<string, AudioSource>();
         allAudioSources.Add("fullTrackSpeaker", fullTrackSpeaker);
@@ -28,7 +51,8 @@ public class AudioManager : MonoBehaviour {
         allAudioSources.Add("musicPercussion", transform.GetChild(4).GetChild(3).GetComponent<AudioSource>());
 
         //ATM
-        allAudioSources.Add("atm", transform.GetChild(3).GetComponent<AudioSource>());
+        allAudioSources.Add("atm_one", transform.GetChild(3).GetChild(0).GetComponent<AudioSource>());
+        allAudioSources.Add("atm_two", transform.GetChild(3).GetChild(1).GetComponent<AudioSource>());
 
         //DIA
         allAudioSources.Add("dialogueOne", transform.GetChild(0).GetChild(0).GetComponent<AudioSource>());
@@ -44,29 +68,28 @@ public class AudioManager : MonoBehaviour {
     }
     void Update()
     {
-        if (fcActive)
-        {
-            ForestCreatureAudioStates(fcAudioStateIndex);
-        }
+
     }
 
 
 
-   
+
     public void PlayATM(bool b) // Turn on or off the ATM audio.
     {
-      if(b)
+        if (b)
         {
             if (debugLog) Debug.Log("Audio: Playing ATM.");
-            allAudioSources["atm"].Play();
+            allAudioSources["atm_one"].Play();
+            allAudioSources["atm_two"].Play();
         }
-      else
+        else
         {
             if (debugLog) Debug.Log("Audio: ATM Stopped.");
-            allAudioSources["atm"].Stop();
+            allAudioSources["atm_one"].Stop();
+            allAudioSources["atm_two"].Stop();
         }
     }
-   
+
     public void PlayMusic(string trackname)
     {
         allAudioSources["fullTrackSpeaker"].clip = aauis.musicAudioPackage.musicTracks[trackname];
@@ -84,44 +107,71 @@ public class AudioManager : MonoBehaviour {
     {
         allAudioSources["dialogueTwo"].PlayOneShot(ac);
     }
-    public void ForestCreatureAudioStates(int state) 
+    public void ForestCreatureAudioStates(int state)
     {
-        switch (state)
+        if (debugLog) Debug.Log("Playing: " + state.ToString());
         {
-            case 0: LerpVolume(1f,"musicBass", 0.5f);
-                    LerpVolume(0f, "musicMelody", 0.5f);
-                    LerpVolume(0f, "musicPercussion", 0.5f);
-                break;
+            switch (state)
+            {
 
-            case 1: LerpVolume(1f, "musicMelody", 0.5f);
-                
-                break;
+                case (int)EnemyMode.Relaxed:
 
-            case 2: LerpVolume(0f, "musicBass", 0.25f);
-                    LerpVolume(0f, "musicMelody", 0.25f);
-                    LerpVolume(1f, "musicPercussion", 0.25f);
-                    
-                break;
+                    StartCoroutine("FadeInVolumeBass");
+                    StartCoroutine("FadeOutVolumeMelody");
+                    StartCoroutine("FadeOutVolumePercussion");
 
-                    
+
+                    break;
+
+                case (int)EnemyMode.Turning:
+                    StartCoroutine("FadeInVolumeMelody");
+
+                    break;
+
+                case (int)EnemyMode.Search:
+                    StartCoroutine("FadeInVolumeBass");
+
+
+                    StartCoroutine("FadeOutMelody");
+                    StartCoroutine("FadeInPercussion");
+
+
+                    break;
+                case (int)EnemyMode.ChasingPlayer:
+                    StartCoroutine("FadeInVolumeBass");
+                    StartCoroutine("FadeInVolumeMelody");
+                    StartCoroutine("FadeInVolumePercussion");
+                    break;
+
+
+            }
         }
-            
+
+    }
+    public void TuvaSafe()
+    {
+        if (debugLog) Debug.Log("Thank You for using TuvaSafe");
+
+        StartCoroutine("FadeOutVolumeBass");
+        StartCoroutine("FadeOutVolumeMelody");
+        StartCoroutine("FadeInVolumePercussion");
     }
     public void LerpVolume(float wantedvolume, string audioSourceName, float time) //<<<<Volume is the float you want to fade to.
     {
-        float currentVolune = allAudioSources[audioSourceName].volume;
+
+        //float currentVolume = allAudioSources[audioSourceName].volume;
         AudioSource audioSource = allAudioSources[audioSourceName];
-        audioSource.volume = Mathf.Lerp(audioSource.volume, wantedvolume, time * Time.deltaTime);
-    }    
+        audioSource.volume = Mathf.Lerp(audioSource.volume, wantedvolume, time);
+    }
     public void ActivateAudio_FC(bool b)
     {
         if (debugLog) Debug.Log("Activate Audio_FC: " + b.ToString());
 
         ActivateAllMusicTracks(false);
 
-         AllAudioSources["musicBass"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeBass"]; //Placing audiotracks in correct audiosource.
-         AllAudioSources["musicMelody"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeMelody"];
-         AllAudioSources["musicPercussion"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeMelody"];
+        AllAudioSources["musicBass"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeBass"]; //Placing audiotracks in correct audiosource.
+        AllAudioSources["musicMelody"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeMelody"];
+        AllAudioSources["musicPercussion"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeMelody"];
 
         ActivateAllMusicTracks(true);
 
@@ -129,7 +179,7 @@ public class AudioManager : MonoBehaviour {
     } //< This should be called when the ForestCreature is triggered.
     public void ActivateAllMusicTracks(bool o)
     {
-        if(o)
+        if (o)
         {
             AllAudioSources["musicBass"].Play();
             AllAudioSources["musicMelody"].Play();
@@ -142,17 +192,67 @@ public class AudioManager : MonoBehaviour {
             allAudioSources["musicPercussion"].Stop();
         }
     } // Call this if you want to play or stop all four music tracks (Not the theme track).
-   
 
+    IEnumerator FadeInVolumeBass()
+         { 
+
+            while (AllAudioSources["musicBass"].volume < 0.01f)
+            {
+                 AllAudioSources["musicBass"].volume -= Time.deltaTime / 0.5f;
+                 yield return null;
+            }  
+             }
+    IEnumerator FadeOutVolumeBass()
+    {
+        while (AllAudioSources["musicBass"].volume > 1.0f)
+        {
+            AllAudioSources["musicBass"].volume -= Time.deltaTime / 0.5f;
+            yield return null;
+        }
+    }
+    IEnumerator FadeInVolumeMelody()
+    {
+        while (AllAudioSources["musicMelody"].volume < 0.01f)
+        {
+            AllAudioSources["musicMelody"].volume -= Time.deltaTime / 0.5f;
+            yield return null;
+        }
+    }
+    IEnumerator FadeOutVolumeMelody()
+    {
+        while (AllAudioSources["musicMelody"].volume > 1.0f)
+        {
+            AllAudioSources["musicMelody"].volume -= Time.deltaTime / 0.5f;
+            yield return null;
+        }
+    }
+    IEnumerator FadeInVolumePercussion()
+    {
+        while (AllAudioSources["musicPercussion"].volume < 0.01f)
+        {
+            AllAudioSources["musicPercussion"].volume -= Time.deltaTime / 0.5f;
+            yield return null;
+        }
+    }
+    IEnumerator FadeOutVolumePercussion()
+    {
+        while (AllAudioSources["musicPercussion"].volume > 1.0f)
+        {
+            AllAudioSources["musicPercussion"].volume -= Time.deltaTime / 0.5f;
+            yield return null;
+        }
+    }
 
 
 
     //Properties
 
-   
-  
-    public AllAudioUsedInScene AAUIS { get { return aauis;} set { aauis = value; } }
-    public Dictionary<string, AudioSource> AllAudioSources { get{ return allAudioSources; } set{ allAudioSources = value; } }
+
+
+    public AllAudioUsedInScene AAUIS { get { return aauis; } set { aauis = value; } }
+    public Dictionary<string, AudioSource> AllAudioSources { get { return allAudioSources; } set { allAudioSources = value; } }
+    public bool FCActive { get { return fcActive; } set { fcActive = value; } }
+    public bool IsTuvaSafe {get{return isTuvaSafe;} set{isTuvaSafe = value;}}
  
     
     
@@ -200,7 +300,7 @@ public struct AllAudioUsedInScene
     public AudioPackage glAudioPackage;
     public AudioPackage mainMenyPackage;
     public MUS_Storage musicAudioPackage;
-    public AudioClip atm;
+    public Dictionary<string, AudioClip> atm;
 }
 public struct MUS_Storage
 {

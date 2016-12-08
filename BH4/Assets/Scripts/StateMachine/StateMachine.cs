@@ -8,6 +8,8 @@ public class StateMachine : MonoBehaviour {
     private IStateBase activeState;
     public AudioManager _audioManager;
     public GameObject tuva;
+
+    public bool isPlayingForest;
     
 
 
@@ -16,7 +18,14 @@ public class StateMachine : MonoBehaviour {
 
     void Start()
     {
-        activeState = new MainMenuState(this);
+        if (!isPlayingForest)
+        {
+            activeState = new MainMenuState(this);
+        }
+        else
+        {
+            activeState = new ForestSliceState(this);
+        }
 
     }
     void Update()

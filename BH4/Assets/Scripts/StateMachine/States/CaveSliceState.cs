@@ -62,8 +62,8 @@ namespace Assets.Code.States
 
 
             //atm
-            aauis.atm = Resources.Load<AudioClip>("Audio/BackgroundTracks/Audio_ForestBackground");
-            _audioManager.AllAudioSources["atm"].clip = aauis.atm;
+            aauis.atm["atm_one"] = Resources.Load<AudioClip>("Audio/BackgroundTracks/Audio_ForestBackground");
+            _audioManager.AllAudioSources["atm_one"].clip = aauis.atm["atm_one"];
 
 
 

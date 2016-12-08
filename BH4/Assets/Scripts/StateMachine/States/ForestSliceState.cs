@@ -8,9 +8,9 @@ namespace Assets.Code.States
     {
         private StateMachine _stateMachine;
         private AudioManager _audioManager;
-       
-        private AllAudioUsedInScene aauis;
         private Dictionary<string, AudioClip> forestCreatureTrack;
+        private AllAudioUsedInScene aauis;
+       
         private Dictionary<string, AudioClip> gameover;
 
         private bool debugLog;
@@ -28,7 +28,8 @@ namespace Assets.Code.States
             _stateMachine = stateMachine_Ref;
             _audioManager = stateMachine_Ref._audioManager;
             aauis = _audioManager.AAUIS;
-            forestCreatureTrack = new Dictionary<string, AudioClip>();
+            forestCreatureTrack = aauis.musicAudioPackage.mus_dictionary["ForestCreature"];
+           
             gameover = new Dictionary<string, AudioClip>();
             _stateMachine.tuva = GameObject.Find("Tuva");
 
@@ -47,7 +48,6 @@ namespace Assets.Code.States
         public void LoadAssets()
         {
             if (debugLog) Debug.Log("Loading Assets for SliceState...");
-
             //ForestCreature
             aauis.fcAudioPackage.fx.Add("screams", Resources.LoadAll<AudioClip>("Audio/Actor/ForestCreature"));
 
@@ -61,23 +61,29 @@ namespace Assets.Code.States
             aauis.lgAudioPackage.foley.Add("grassFootsteps", Resources.LoadAll<AudioClip>("Audio/Actor/Tuva/FootSteps/Grass"));
 
             //ATM
-            aauis.atm = Resources.Load<AudioClip>("Audio/BackgroundTracks/Audio_ForestBackground");
+            aauis.atm["atm_one"] = Resources.Load<AudioClip>("Audio/BackgroundTracks/Audio_ForestBackground");
+            aauis.atm["atm_two"] = Resources.Load<AudioClip>("Audio/SoundFX/Environment/Miscellaneous/Audio_OwlHooting");
+            _audioManager.AllAudioSources["atm_one"].clip = aauis.atm["atm_one"];
+            _audioManager.AllAudioSources["atm_two"].clip = aauis.atm["atm_two"];
 
             //Music
+           
+
+
             forestCreatureTrack.Add("wholeBass", Resources.Load<AudioClip>("Audio/Music/TreeCreature/Bass"));
-            forestCreatureTrack.Add("wholeHigh", Resources.Load<AudioClip>("Audio/Music/TreeCreature/High"));
+            forestCreatureTrack.Add("wholeMelody", Resources.Load<AudioClip>("Audio/Music/TreeCreature/High"));
             forestCreatureTrack.Add("wholePercussion", Resources.Load<AudioClip>("Audio/Music/TreeCreature/Percussion"));
 
             
-            _audioManager.AllAudioSources["musicBass"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeBass"]; //Placing audiotracks in correct audiosource.
-            _audioManager.AllAudioSources["musicMelody"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeMelody"];
-           _audioManager.AllAudioSources["musicPercussion"].clip = aauis.musicAudioPackage.mus_dictionary["ForestCreature"]["wholeMelody"];
+                _audioManager.AllAudioSources["musicBass"].clip = forestCreatureTrack["wholeBass"]; //Placing audiotracks in correct audiosource.
+                _audioManager.AllAudioSources["musicMelody"].clip = forestCreatureTrack["wholeMelody"];
+                _audioManager.AllAudioSources["musicPercussion"].clip = forestCreatureTrack["wholePercussion"];
 
             aauis.musicAudioPackage.musicTracks.Add("GameOver", Resources.Load<AudioClip>("Audio/Music/GameOver"));
             
 
 
-            aauis.musicAudioPackage.mus_dictionary.Add("ForestCreature", forestCreatureTrack);
+           
             
 
 
@@ -90,7 +96,7 @@ namespace Assets.Code.States
             if (debugLog) Debug.Log("Unloading not needed Assets");
 
             _audioManager.PlayATM(false);
-            aauis.atm = null;
+            aauis.atm["atm_one"] = null;
             
             if (debugLog) Debug.Log("Assets unloaded.");
 

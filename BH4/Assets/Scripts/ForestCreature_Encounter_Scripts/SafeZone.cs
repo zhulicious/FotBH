@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class SafeZone : MonoBehaviour {
 
 	private Script_Mama_ForestCreature mamaRef;
+    public bool debugLog;
 
 
 	void Start () {
@@ -15,16 +15,19 @@ public class SafeZone : MonoBehaviour {
 		if (col.name == "Tuva")
 		{
 			mamaRef.PlayerStatus(true);
+            mamaRef._AudioManager.TuvaSafe();
+            
 		}
-		Debug.Log ("Safe");
+		if(debugLog)Debug.Log ("Safe");
 	}
 	void OnTriggerExit2D(Collider2D col)
 	{
 		if (col.name == "Tuva") 
 		{
 			mamaRef.PlayerStatus(false);
+            mamaRef.EnemyBehaviourRef.Action();
 		}
-		Debug.Log ("No Safe");
+		if(debugLog)Debug.Log ("No Safe");
 
 			
 	}
